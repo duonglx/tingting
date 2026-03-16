@@ -128,19 +128,18 @@
       </div>
     </div>
 
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu fixed inset-0 bg-dark/98 flex flex-col items-center justify-center gap-8 md:hidden" id="mobile-menu">
+      <button class="absolute top-5 right-5 cursor-pointer p-2" id="menu-close" aria-label="Close menu">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+      <a href="#about" class="text-2xl font-bold hover:text-brand transition-colors cursor-pointer nav-link">About</a>
+      <a href="#services" class="text-2xl font-bold hover:text-brand transition-colors cursor-pointer nav-link">Services</a>
+      <a href="#ecosystem" class="text-2xl font-bold hover:text-brand transition-colors cursor-pointer nav-link">Ecosystem</a>
+      <a href="#creator-hub" class="text-2xl font-bold hover:text-brand transition-colors cursor-pointer nav-link">Creator Hub</a>
+      <a href="#contact" class="bg-brand hover:bg-brand-dark text-white font-bold px-8 py-3 rounded-lg transition-colors cursor-pointer nav-link">Contact Us</a>
+    </div>
   </nav>
-
-  <!-- Mobile Menu Overlay (outside nav to avoid containment issues) -->
-  <div class="mobile-menu fixed inset-0 z-[60] flex flex-col items-center justify-center gap-8 md:hidden" id="mobile-menu" style="background-color: #1A1A1A;">
-    <button class="absolute top-5 right-5 cursor-pointer p-2" id="menu-close" aria-label="Close menu">
-      <i data-lucide="x" class="w-6 h-6"></i>
-    </button>
-    <a href="#about" class="text-2xl font-bold hover:text-brand transition-colors cursor-pointer nav-link">About</a>
-    <a href="#services" class="text-2xl font-bold hover:text-brand transition-colors cursor-pointer nav-link">Services</a>
-    <a href="#ecosystem" class="text-2xl font-bold hover:text-brand transition-colors cursor-pointer nav-link">Ecosystem</a>
-    <a href="#creator-hub" class="text-2xl font-bold hover:text-brand transition-colors cursor-pointer nav-link">Creator Hub</a>
-    <a href="#contact" class="bg-brand hover:bg-brand-dark text-white font-bold px-8 py-3 rounded-lg transition-colors cursor-pointer nav-link">Contact Us</a>
-  </div>
 
   <!-- ===================== HERO ===================== -->
   <section id="hero" class="relative min-h-screen flex items-center overflow-hidden">
