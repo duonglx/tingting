@@ -58,6 +58,44 @@
 2. Push `gh-pages`
 3. Live at: `https://tingtingnetworks.asia`
 
+## UI/UX Pro Max Skill
+
+Design intelligence tool with 50+ styles, 97 color palettes, 57 font pairings, 99 UX guidelines.
+
+### Generate Design System (start here)
+```bash
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "<keywords>" --design-system -p "Project Name"
+```
+Example: `python3 .claude/skills/ui-ux-pro-max/scripts/search.py "social commerce dark bento apple" --design-system -p "TingTing v6"`
+
+### Search Specific Domains
+```bash
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "<keyword>" --domain <domain> [-n <max>]
+```
+Domains: `style`, `typography`, `color`, `landing`, `chart`, `ux`, `product`, `prompt`
+
+### Stack Guidelines
+```bash
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "<keyword>" --stack html-tailwind
+```
+Stacks: `html-tailwind`, `react`, `nextjs`, `vue`, `svelte`, `shadcn`
+
+### Quick Reference
+- `--domain style "glassmorphism dark"` → style recommendations
+- `--domain typography "modern clean"` → font pairings
+- `--domain color "social commerce"` → color palettes
+- `--domain landing "hero bento"` → page structure patterns
+- `--domain ux "animation accessibility"` → UX best practices
+
+### Pre-Delivery Checklist
+- No emojis as icons (use Lucide SVG)
+- `cursor-pointer` on all clickable elements
+- Hover transitions 150-300ms
+- Text contrast ≥ 4.5:1 (WCAG AA)
+- Focus states visible for keyboard nav
+- `prefers-reduced-motion` respected
+- Responsive: 375px, 768px, 1024px, 1440px
+
 ## Key Info
 
 - GitHub Pages serves from `gh-pages` branch, root `/`
