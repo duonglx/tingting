@@ -34,6 +34,42 @@
 - **DO NOT** commit and push any confidential information (such as dotenv files, API keys, database credentials, etc.) to git repository!
 - Create clean, professional commit messages without AI references. Use conventional commit format.
 
+## Project Folder Structure
+```
+/TingTing
+├── tingtingnetworks/    # Production site (tingtingnetworks.asia)
+│   └── index.html       # Active production version (overwritten on release)
+├── versions/            # All version archives
+│   ├── v1/              # Legacy v1 folder
+│   ├── index_v2.html
+│   ├── index_v3.html
+│   ├── index_v4.html
+│   └── index_v5.html
+└── ...
+```
+
+## GitHub Pages Deploy & Versioning
+When user mentions "upload/push to GitHub Pages" and/or "đánh version":
+1. **Save to versions/** — new/modified file goes to `versions/index_vN.html`
+2. **Commit to `main`** — stage files, commit with conventional message
+3. **Tag version** — `git tag -a vX.Y.Z -m "description"`, increment from latest tag (`git tag --sort=-v:refname | head -1`)
+4. **Push main + tag** — `git push origin main && git push origin vX.Y.Z`
+5. **Deploy to `gh-pages`** — this repo serves Pages from `gh-pages` branch:
+   ```
+   git checkout gh-pages
+   git checkout main -- versions/ tingtingnetworks/
+   git add versions/ tingtingnetworks/ && git commit -m "feat: deploy <description>"
+   git push origin gh-pages
+   git checkout main
+   ```
+6. **Confirm URL** — preview at `https://duonglx.github.io/tingting/versions/index_vN.html`
+
+## Release to Production
+When user says "release vN" or "release version N":
+1. **Copy version to production** — `cp versions/index_vN.html tingtingnetworks/index.html`
+2. **Commit + push** both `main` and `gh-pages` (follow deploy steps above)
+3. **Production URL** — `https://duonglx.github.io/tingting/tingtingnetworks/` (maps to tingtingnetworks.asia)
+
 ## Code Implementation
 - Write clean, readable, and maintainable code
 - Follow established architectural patterns
