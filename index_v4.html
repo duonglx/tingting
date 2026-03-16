@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <!-- Primary SEO -->
+  <title>TingTing Networks | Social Commerce &amp; Creator Solutions in Vietnam</title>
+  <meta name="description" content="Vietnam's #1 shoppertainment solution: MCN partnerships, LIVE operations, social affiliate community &amp; seller enablement for 100+ brands.">
+  <meta name="keywords" content="social commerce Vietnam, MCN Vietnam, creator network, livestream commerce, shoppertainment, TikTok Shop partner, creator partnership">
+  <meta name="author" content="TingTing Networks">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://duonglx.github.io/tingting/index_v4.html">
+
+  <!-- Geo -->
+  <meta name="geo.region" content="VN-SG">
+  <meta name="geo.placename" content="Ho Chi Minh City">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="TingTing Networks — Content · Creator · Commerce">
+  <meta property="og:description" content="Vietnam's one-stop shoppertainment solution provider. 100+ brands, 500+ creators.">
+  <meta property="og:url" content="https://duonglx.github.io/tingting/index_v4.html">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:site_name" content="TingTing Networks">
+  <meta property="og:image" content="https://www.tingting.asia/og-image.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="TingTing Networks | Social Commerce &amp; Creator Solutions">
+  <meta name="twitter:description" content="One-stop shoppertainment solution provider in Vietnam. MCN, LIVE Ops, Social Affiliate &amp; Seller Enablement.">
+  <meta name="twitter:image" content="https://www.tingting.asia/og-image.jpg">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "TingTing Networks",
+    "url": "https://www.tingting.asia",
+    "logo": "https://www.tingting.asia/logo.png",
+    "description": "Vietnam's one-stop shoppertainment solution provider. MCN creator partnerships, LIVE operations, social affiliate community and seller enablement.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "25A Tu Xuong",
+      "addressLocality": "Ho Chi Minh City",
+      "addressRegion": "District 3",
+      "addressCountry": "VN"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+84-901807346",
+      "contactType": "partnership",
+      "email": "partnership@tingting.asia",
+      "availableLanguage": ["Vietnamese", "English"]
+    },
+    "serviceArea": {
+      "@type": "GeoShape",
+      "name": "Southeast Asia"
+    },
+    "sameAs": []
+  }
+  </script>
+
+  <!-- Fonts: preconnect then load with font-display swap -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'bg-primary':  '#050510',
+            'bg-surface':  '#0A0F1A',
+            'bg-elevated': '#121B2E',
+            'brand':       '#A3E635',
+            'brand-hover': '#BEF264',
+            'brand-dark':  '#65A30D',
+            'text-primary':'#F0F4F8',
+            'text-body':   '#94A3B8',
+            'text-muted':  '#475569',
+            'border-col':  '#1E293B',
+          },
+          fontFamily: {
+            heading: ['Space Grotesk', 'sans-serif'],
+            body:    ['DM Sans', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <style>
+    /* ── Critical CSS ── */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: #050510;
+      color: #F0F4F8;
+      overflow-x: hidden;
+      touch-action: manipulation;
+      overscroll-behavior: contain;
+    }
+
+    /* Typography scale */
+    .h1 { font-size: clamp(2.5rem, 10vw, 5.5rem); font-family: 'Space Grotesk', sans-serif; font-weight: 700; line-height: 1.0; }
+    .h2 { font-size: clamp(1.75rem, 5vw, 3rem); font-family: 'Space Grotesk', sans-serif; font-weight: 700; line-height: 1.05; }
+    .h3 { font-size: 1.125rem; font-family: 'Space Grotesk', sans-serif; font-weight: 700; line-height: 1.2; }
+
+    /* Scroll animations */
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-up.is-visible { opacity: 1; transform: translateY(0); }
+    .stagger-1 { transition-delay: 0.1s; }
+    .stagger-2 { transition-delay: 0.2s; }
+    .stagger-3 { transition-delay: 0.3s; }
+    .stagger-4 { transition-delay: 0.4s; }
+
+    /* Reduced motion override */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .fade-up { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* Hero gradient mesh — lime green variant */
+    .hero-mesh {
+      background:
+        radial-gradient(ellipse 60% 50% at 70% 40%, rgba(163,230,53,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at 20% 70%, rgba(163,230,53,0.06) 0%, transparent 55%),
+        radial-gradient(ellipse 30% 40% at 50% 10%, rgba(101,163,13,0.08) 0%, transparent 50%),
+        #050510;
+    }
+
+    /* Hero grid overlay — lime-tinted */
+    .hero-grid {
+      background-image:
+        linear-gradient(rgba(163,230,53,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(163,230,53,0.07) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    /* Scroll chevron animation */
+    @keyframes bounce-y {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
+    .bounce { animation: bounce-y 1.8s ease-in-out infinite; }
+
+    /* Services horizontal scroll */
+    .snap-scroll {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: 0.5rem;
+    }
+    .snap-scroll::-webkit-scrollbar { display: none; }
+    .snap-card {
+      scroll-snap-align: start;
+      flex: 0 0 calc(85vw - 2rem);
+      max-width: 320px;
+    }
+    @media (min-width: 1024px) {
+      .snap-scroll { display: grid; grid-template-columns: 1fr 1fr; overflow-x: visible; scroll-snap-type: none; }
+      .snap-card { flex: none; max-width: none; }
+    }
+
+    /* Social proof scroll */
+    .proof-scroll {
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .proof-scroll::-webkit-scrollbar { display: none; }
+    .proof-item {
+      scroll-snap-align: start;
+      flex: 0 0 52vw;
+    }
+    @media (min-width: 640px) { .proof-item { flex: 1 1 0; } }
+    @media (min-width: 1024px) { .proof-item { flex: 1 1 0; } }
+
+    /* Accordion */
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+    .accordion-body.open { max-height: 300px; }
+    .accordion-icon { transition: transform 0.3s ease; }
+    .accordion-icon.open { transform: rotate(45deg); }
+
+    /* Tab pill — lime active */
+    .tab-btn { transition: background 0.2s ease, color 0.2s ease; }
+    .tab-btn.active { background: #A3E635; color: #050510; }
+    .tab-pane { display: none; }
+    .tab-pane.active { display: block; }
+
+    /* Dot indicators */
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: #1E293B; transition: background 0.2s; }
+    .dot.active { background: #A3E635; width: 18px; border-radius: 3px; }
+
+    /* Sticky mobile CTA */
+    #sticky-cta {
+      transform: translateY(100%);
+      transition: transform 0.4s ease;
+    }
+    #sticky-cta.visible { transform: translateY(0); }
+
+    /* Bottom nav active indicator — lime dot */
+    .bnav-item .bnav-dot {
+      width: 4px; height: 4px; border-radius: 50%;
+      background: transparent;
+      transition: background 0.2s;
+      margin: 2px auto 0;
+    }
+    .bnav-item.active .bnav-dot { background: #A3E635; }
+    .bnav-item.active svg { color: #A3E635; }
+    .bnav-item svg { color: #475569; transition: color 0.2s; }
+    .bnav-item span { color: #475569; transition: color 0.2s; }
+    .bnav-item.active span { color: #A3E635; }
+
+    /* SVG Ecosystem triangle */
+    .eco-svg text { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+
+    /* Form focus ring — lime */
+    .form-input:focus { outline: 2px solid #A3E635; outline-offset: 1px; }
+
+    /* Service card hover — lime glow */
+    .service-card:hover {
+      border-color: rgba(163,230,53,0.4);
+      box-shadow: 0 0 20px rgba(163,230,53,0.1);
+    }
+
+    /* Creator hub card hover */
+    .hub-card:hover {
+      border-color: rgba(163,230,53,0.3);
+      box-shadow: 0 0 16px rgba(163,230,53,0.08);
+    }
+
+    /* Desktop nav link underline — lime */
+    .dnav-link { position: relative; }
+    .dnav-link::after {
+      content: ''; position: absolute; bottom: -2px; left: 0; right: 0;
+      height: 2px; background: #A3E635; transform: scaleX(0);
+      transition: transform 0.2s ease;
+    }
+    .dnav-link:hover::after { transform: scaleX(1); }
+
+    /* Section divider — lime glow line */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, #A3E635 30%, #A3E635 70%, transparent 100%);
+      opacity: 0.3;
+      box-shadow: 0 0 8px rgba(163,230,53,0.4);
+    }
+
+    /* Gradient CTA button — lime to emerald */
+    .btn-gradient {
+      background: linear-gradient(135deg, #A3E635 0%, #34D399 100%);
+      color: #050510;
+      font-weight: 700;
+      transition: opacity 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-gradient:hover {
+      opacity: 0.92;
+      box-shadow: 0 4px 20px rgba(163,230,53,0.35);
+    }
+
+    /* Stats numbers glow */
+    .stat-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      color: #A3E635;
+      text-shadow: 0 0 20px rgba(163,230,53,0.4);
+    }
+
+    /* Lime glow card effect */
+    .glow-card {
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .glow-card:hover {
+      box-shadow: 0 0 24px rgba(163,230,53,0.12);
+      border-color: rgba(163,230,53,0.25);
+    }
+
+    /* Safe area bottom spacing */
+    .pb-safe { padding-bottom: calc(56px + env(safe-area-inset-bottom)); }
+    .bottom-nav-height { height: calc(56px + env(safe-area-inset-bottom)); }
+  </style>
+</head>
+
+<body class="bg-bg-primary">
+
+  <!-- ═══════════════════════════════════════════
+       BOTTOM MOBILE NAV (mobile only, fixed)
+  ═══════════════════════════════════════════ -->
+  <nav id="bottom-nav" class="fixed bottom-0 left-0 right-0 z-50 lg:hidden" style="background:#0A0F1A; border-top:1px solid #1E293B; height:calc(56px + env(safe-area-inset-bottom)); padding-bottom:env(safe-area-inset-bottom);">
+    <div class="flex items-center h-14">
+      <a href="#hero" class="bnav-item active flex-1 flex flex-col items-center justify-center gap-0.5 py-2 min-h-[44px]" aria-label="Home">
+        <i data-lucide="home" class="w-5 h-5"></i>
+        <span class="text-[10px] font-medium">Home</span>
+        <div class="bnav-dot"></div>
+      </a>
+      <a href="#services" class="bnav-item flex-1 flex flex-col items-center justify-center gap-0.5 py-2 min-h-[44px]" aria-label="Services">
+        <i data-lucide="layout-grid" class="w-5 h-5"></i>
+        <span class="text-[10px] font-medium">Services</span>
+        <div class="bnav-dot"></div>
+      </a>
+      <a href="#creator-hub" class="bnav-item flex-1 flex flex-col items-center justify-center gap-0.5 py-2 min-h-[44px]" aria-label="Creator Hub">
+        <i data-lucide="building-2" class="w-5 h-5"></i>
+        <span class="text-[10px] font-medium">Hub</span>
+        <div class="bnav-dot"></div>
+      </a>
+      <a href="#contact" class="bnav-item flex-1 flex flex-col items-center justify-center gap-0.5 py-2 min-h-[44px]" aria-label="Contact">
+        <i data-lucide="mail" class="w-5 h-5"></i>
+        <span class="text-[10px] font-medium">Contact</span>
+        <div class="bnav-dot"></div>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════
+       DESKTOP TOP NAV (desktop only, sticky)
+  ═══════════════════════════════════════════ -->
+  <nav id="top-nav" class="hidden lg:flex fixed top-0 left-0 right-0 z-50 transition-all duration-300" style="background:transparent;">
+    <div class="max-w-7xl mx-auto px-8 w-full flex items-center justify-between h-20">
+      <!-- Logo -->
+      <a href="#hero" class="flex items-center gap-2 shrink-0">
+        <span class="font-heading font-bold text-2xl text-brand">TingTing</span>
+        <span class="font-heading font-bold text-xl text-text-primary/90">networks</span>
+      </a>
+      <!-- Nav links -->
+      <div class="flex items-center gap-8">
+        <a href="#about"       class="dnav-link text-sm text-text-body hover:text-text-primary transition-colors font-medium">About</a>
+        <a href="#problems"    class="dnav-link text-sm text-text-body hover:text-text-primary transition-colors font-medium">Solutions</a>
+        <a href="#services"    class="dnav-link text-sm text-text-body hover:text-text-primary transition-colors font-medium">Services</a>
+        <a href="#ecosystem"   class="dnav-link text-sm text-text-body hover:text-text-primary transition-colors font-medium">Ecosystem</a>
+        <a href="#creator-hub" class="dnav-link text-sm text-text-body hover:text-text-primary transition-colors font-medium">Creator Hub</a>
+      </div>
+      <!-- CTA gradient button -->
+      <a href="#contact" class="btn-gradient px-6 py-3 rounded-xl text-sm min-h-[44px] flex items-center font-heading">
+        Partner With Us
+      </a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════ -->
+  <section id="hero" class="hero-mesh relative min-h-screen flex flex-col justify-center overflow-hidden pb-safe lg:pb-0">
+    <!-- Lime-tinted grid overlay -->
+    <div class="hero-grid absolute inset-0 opacity-100"></div>
+
+    <!-- Desktop decorative stripes (lime variant, hidden on mobile) -->
+    <div class="hidden lg:block absolute top-0 right-0 w-1/4 h-full overflow-hidden pointer-events-none" aria-hidden="true">
+      <div class="absolute top-[-10%] right-[8%] w-[120px] h-[120%] opacity-60" style="background: linear-gradient(180deg, #A3E635 0%, #34D399 100%); transform:skewX(-12deg);"></div>
+      <div class="absolute top-[-10%] right-[calc(8%+70px)] w-[50px] h-[120%] opacity-30" style="background: linear-gradient(180deg, #A3E635 0%, #34D399 100%); transform:skewX(-12deg);"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 w-full">
+      <div class="max-w-2xl">
+        <p class="text-text-muted text-xs sm:text-sm tracking-[0.2em] uppercase mb-4 fade-up font-body">Vietnam's #1 Shoppertainment Platform</p>
+        <h1 class="h1 fade-up stagger-1 mb-4">
+          <span class="text-brand">TingTing</span><br>
+          <span class="text-text-primary">Networks</span>
+        </h1>
+        <p class="text-text-muted text-sm sm:text-base tracking-[0.15em] uppercase mb-3 fade-up stagger-2 font-body">Content · Creator · Commerce</p>
+        <p class="text-text-body text-lg sm:text-xl mb-10 fade-up stagger-3 max-w-lg font-body">Where connection brings impact.</p>
+        <!-- Full-width CTA on mobile, inline on desktop -->
+        <div class="fade-up stagger-4">
+          <a href="#contact" class="btn-gradient block w-full lg:inline-block lg:w-auto text-lg py-4 px-8 rounded-2xl text-center font-heading" style="min-height:56px; line-height:1.4;">
+            Get Started
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Animated scroll chevron -->
+    <div class="absolute bottom-24 lg:bottom-10 left-1/2 -translate-x-1/2 bounce" aria-hidden="true">
+      <i data-lucide="chevron-down" class="w-7 h-7 text-text-muted"></i>
+    </div>
+  </section>
+
+  <!-- Section divider -->
+  <div class="section-divider"></div>
+
+  <!-- ═══════════════════════════════════════════
+       SOCIAL PROOF BAR
+  ═══════════════════════════════════════════ -->
+  <section class="bg-bg-surface border-y border-border-col py-6 overflow-hidden fade-up">
+    <div class="proof-scroll lg:flex lg:justify-around lg:overflow-visible max-w-7xl lg:mx-auto lg:px-8" id="proof-bar">
+      <div class="proof-item flex flex-col items-center justify-center py-4 px-4 border-r border-border-col">
+        <div class="stat-number text-3xl sm:text-4xl"><span class="counter-val" data-target="100">0</span>+</div>
+        <div class="text-text-muted text-xs mt-1 tracking-wide uppercase font-body">Brand Partners</div>
+      </div>
+      <div class="proof-item flex flex-col items-center justify-center py-4 px-4 border-r border-border-col">
+        <div class="stat-number text-3xl sm:text-4xl"><span class="counter-val" data-target="500">0</span>+</div>
+        <div class="text-text-muted text-xs mt-1 tracking-wide uppercase font-body">Active Creators</div>
+      </div>
+      <div class="proof-item flex flex-col items-center justify-center py-4 px-4 border-r border-border-col">
+        <div class="stat-number text-3xl sm:text-4xl">#1</div>
+        <div class="text-text-muted text-xs mt-1 tracking-wide uppercase font-body">Mega LIVE SEA</div>
+      </div>
+      <div class="proof-item flex flex-col items-center justify-center py-4 px-4">
+        <div class="stat-number text-3xl sm:text-4xl"><span class="counter-val" data-target="4">0</span></div>
+        <div class="text-text-muted text-xs mt-1 tracking-wide uppercase font-body">Verticals</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       ABOUT (accordion mobile / 2-col desktop)
+  ═══════════════════════════════════════════ -->
+  <section id="about" class="bg-bg-primary py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Desktop: 2-col layout -->
+      <div class="lg:grid lg:grid-cols-2 lg:gap-20 lg:items-start">
+        <!-- Left heading -->
+        <div class="mb-10 lg:mb-0 fade-up">
+          <p class="text-brand text-xs tracking-[0.2em] uppercase font-medium mb-3 font-body">Who We Are</p>
+          <h2 class="h2 text-text-primary mb-4">One page<br>about us.</h2>
+          <p class="text-text-body text-base leading-relaxed max-w-sm font-body">One of Vietnam's first social commerce operators — connecting brands, creators, and platforms for measurable growth.</p>
+        </div>
+
+        <!-- Right: Accordion items -->
+        <div class="space-y-3" id="accordion">
+
+          <div class="accordion-item glow-card bg-bg-surface border border-border-col rounded-2xl overflow-hidden fade-up stagger-1">
+            <button class="accordion-trigger w-full flex items-center justify-between px-5 py-4 text-left min-h-[56px]" aria-expanded="true">
+              <div class="flex items-center gap-4">
+                <span class="font-heading font-bold text-3xl text-text-muted/30 w-10 shrink-0">01</span>
+                <span class="font-heading font-bold text-text-primary text-base">OPERATIONS</span>
+              </div>
+              <i data-lucide="plus" class="accordion-icon open w-5 h-5 text-brand shrink-0"></i>
+            </button>
+            <div class="accordion-body open">
+              <p class="px-5 pb-5 text-text-body text-sm leading-relaxed font-body" style="padding-left:calc(1.25rem + 2.5rem + 1rem);">One of the 1st players of social commerce in Vietnam. Ran 2023's largest Mega LIVE and achieved hat-trick records of the biggest LIVEs in SEA.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item glow-card bg-bg-surface border border-border-col rounded-2xl overflow-hidden fade-up stagger-2">
+            <button class="accordion-trigger w-full flex items-center justify-between px-5 py-4 text-left min-h-[56px]" aria-expanded="false">
+              <div class="flex items-center gap-4">
+                <span class="font-heading font-bold text-3xl text-text-muted/30 w-10 shrink-0">02</span>
+                <span class="font-heading font-bold text-text-primary text-base">COMMUNITY</span>
+              </div>
+              <i data-lucide="plus" class="accordion-icon w-5 h-5 text-brand shrink-0"></i>
+            </button>
+            <div class="accordion-body">
+              <p class="px-5 pb-5 text-text-body text-sm leading-relaxed font-body" style="padding-left:calc(1.25rem + 2.5rem + 1rem);">Deep knowledge of cultivating and monitoring community networks for Fintech companies and beyond — from grassroots to national scale.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item glow-card bg-bg-surface border border-border-col rounded-2xl overflow-hidden fade-up stagger-3">
+            <button class="accordion-trigger w-full flex items-center justify-between px-5 py-4 text-left min-h-[56px]" aria-expanded="false">
+              <div class="flex items-center gap-4">
+                <span class="font-heading font-bold text-3xl text-text-muted/30 w-10 shrink-0">03</span>
+                <span class="font-heading font-bold text-text-primary text-base">PARTNERSHIP</span>
+              </div>
+              <i data-lucide="plus" class="accordion-icon w-5 h-5 text-brand shrink-0"></i>
+            </button>
+            <div class="accordion-body">
+              <p class="px-5 pb-5 text-text-body text-sm leading-relaxed font-body" style="padding-left:calc(1.25rem + 2.5rem + 1rem);">Clients from everywhere: FMCG brands, Entertainment, Media agencies, and Marketing solution teams of e-commerce platforms — creators × brands.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item glow-card bg-bg-surface border border-border-col rounded-2xl overflow-hidden fade-up stagger-4">
+            <button class="accordion-trigger w-full flex items-center justify-between px-5 py-4 text-left min-h-[56px]" aria-expanded="false">
+              <div class="flex items-center gap-4">
+                <span class="font-heading font-bold text-3xl text-text-muted/30 w-10 shrink-0">04</span>
+                <span class="font-heading font-bold text-text-primary text-base">LIVESTREAMING</span>
+              </div>
+              <i data-lucide="plus" class="accordion-icon w-5 h-5 text-brand shrink-0"></i>
+            </button>
+            <div class="accordion-body">
+              <p class="px-5 pb-5 text-text-body text-sm leading-relaxed font-body" style="padding-left:calc(1.25rem + 2.5rem + 1rem);">Years of experience as Key Account Managers on e-commerce &amp; social commerce platforms and FMCG brands — maximizing assortment and LIVE revenue.</p>
+            </div>
+          </div>
+
+        </div><!-- /accordion -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Section divider -->
+  <div class="section-divider"></div>
+
+  <!-- ═══════════════════════════════════════════
+       PROBLEMS — tabbed (Brands | Creators)
+  ═══════════════════════════════════════════ -->
+  <section id="problems" class="bg-bg-surface py-16 lg:py-24 border-t border-border-col">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10 fade-up">
+        <p class="text-brand text-xs tracking-[0.2em] uppercase font-medium mb-3 font-body">Pain Points We Solve</p>
+        <h2 class="h2 text-text-primary mb-4">We understand your problems.<br><span class="text-brand">And solve them.</span></h2>
+      </div>
+
+      <!-- Tab switcher — lime active pill -->
+      <div class="flex justify-center mb-8 fade-up stagger-1">
+        <div class="inline-flex rounded-full p-1" style="background:#121B2E; border:1px solid #1E293B;">
+          <button class="tab-btn active font-medium text-sm px-6 py-2.5 rounded-full min-h-[44px] font-body" data-tab="brands">For Brands</button>
+          <button class="tab-btn font-medium text-sm px-6 py-2.5 rounded-full min-h-[44px] text-text-muted font-body" data-tab="creators">For Creators</button>
+        </div>
+      </div>
+
+      <!-- Tab: Brands -->
+      <div class="tab-pane active" id="tab-brands">
+        <div class="grid lg:grid-cols-3 gap-3 fade-up stagger-2">
+          <div class="flex items-center gap-3 bg-bg-elevated border border-border-col rounded-xl p-4 min-h-[56px] glow-card">
+            <i data-lucide="target" class="w-5 h-5 text-brand shrink-0"></i>
+            <span class="text-text-body text-sm font-medium font-body">Omni-channel growth strategy</span>
+          </div>
+          <div class="flex items-center gap-3 bg-bg-elevated border border-border-col rounded-xl p-4 min-h-[56px] glow-card">
+            <i data-lucide="trending-down" class="w-5 h-5 text-brand shrink-0"></i>
+            <span class="text-text-body text-sm font-medium font-body">Dropping engagement</span>
+          </div>
+          <div class="flex items-center gap-3 bg-bg-elevated border border-border-col rounded-xl p-4 min-h-[56px] glow-card">
+            <i data-lucide="git-branch" class="w-5 h-5 text-brand shrink-0"></i>
+            <span class="text-text-body text-sm font-medium font-body">Cross-functional communications</span>
+          </div>
+          <div class="flex items-center gap-3 bg-bg-elevated border border-border-col rounded-xl p-4 min-h-[56px] glow-card">
+            <i data-lucide="zap" class="w-5 h-5 text-brand shrink-0"></i>
+            <span class="text-text-body text-sm font-medium font-body">Keep up with trends</span>
+          </div>
+          <div class="flex items-center gap-3 bg-bg-elevated border border-border-col rounded-xl p-4 min-h-[56px] glow-card">
+            <i data-lucide="award" class="w-5 h-5 text-brand shrink-0"></i>
+            <span class="text-text-body text-sm font-medium font-body">Stand out from competition</span>
+          </div>
+          <div class="flex items-center gap-3 bg-bg-elevated border border-border-col rounded-xl p-4 min-h-[56px] glow-card">
+            <i data-lucide="flame" class="w-5 h-5 text-brand shrink-0"></i>
+            <span class="text-text-body text-sm font-medium font-body">Creative burnout</span>
+          </div>
+          <div class="flex items-center gap-3 bg-bg-elevated border border-border-col rounded-xl p-4 min-h-[56px] glow-card">
+            <i data-lucide="bar-chart-3" class="w-5 h-5 text-brand shrink-0"></i>
+            <span class="text-text-body text-sm font-medium font-body">Proving social commerce ROI</span>
+          </div>
+          <div class="flex items-center gap-3 bg-bg-elevated border border-border-col rounded-xl p-4 min-h-[56px] glow-card">
+            <i data-lucide="dollar-sign" class="w-5 h-5 text-brand shrink-0"></i>
+            <span class="text-text-body text-sm font-medium font-body">Monetizing creator talent</span>
+          </div>
+          <div class="flex items-center gap-3 bg-bg-elevated border border-border-col rounded-xl p-4 min-h-[56px] glow-card">
+            <i data-lucide="shield-alert" class="w-5 h-5 text-brand shrink-0"></i>
+            <span class="text-text-body text-sm font-medium font-body">Loss &amp; crisis management</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab: Creators -->
+      <div class="tab-pane" id="tab-creators">
+        <div class="grid lg:grid-cols-3 gap-3 fade-up stagger-2">
+          <div class="flex items-center gap-3 bg-bg-elevated border border-border-col rounded-xl p-4 min-h-[56px] glow-card">
+            <i data-lucide="map" class="w-5 h-5 text-brand shrink-0"></i>
+            <span class="text-text-body text-sm font-medium font-body">No clear career roadmap</span>
+          </div>
+          <div class="flex items-center gap-3 bg-bg-elevated border border-border-col rounded-xl p-4 min-h-[56px] glow-card">
+            <i data-lucide="user" class="w-5 h-5 text-brand shrink-0"></i>
+            <span class="text-text-body text-sm font-medium font-body">No personal branding strategy</span>
+          </div>
+          <div class="flex items-center gap-3 bg-bg-elevated border border-border-col rounded-xl p-4 min-h-[56px] glow-card">
+            <i data-lucide="layers" class="w-5 h-5 text-brand shrink-0"></i>
+            <span class="text-text-body text-sm font-medium font-body">Limited multi-channel resources</span>
+          </div>
+          <div class="flex items-center gap-3 bg-bg-elevated border border-border-col rounded-xl p-4 min-h-[56px] glow-card">
+            <i data-lucide="lightbulb" class="w-5 h-5 text-brand shrink-0"></i>
+            <span class="text-text-body text-sm font-medium font-body">No supporting creative hub</span>
+          </div>
+          <div class="flex items-center gap-3 bg-bg-elevated border border-border-col rounded-xl p-4 min-h-[56px] glow-card">
+            <i data-lucide="wrench" class="w-5 h-5 text-brand shrink-0"></i>
+            <span class="text-text-body text-sm font-medium font-body">Lack of tools and equipment</span>
+          </div>
+          <div class="flex items-center gap-3 bg-bg-elevated border border-border-col rounded-xl p-4 min-h-[56px] glow-card">
+            <i data-lucide="users" class="w-5 h-5 text-brand shrink-0"></i>
+            <span class="text-text-body text-sm font-medium font-body">No quality &amp; committed team</span>
+          </div>
+          <div class="flex items-center gap-3 bg-bg-elevated border border-border-col rounded-xl p-4 min-h-[56px] glow-card">
+            <i data-lucide="wallet" class="w-5 h-5 text-brand shrink-0"></i>
+            <span class="text-text-body text-sm font-medium font-body">Limited workforce for monetization</span>
+          </div>
+          <div class="flex items-center gap-3 bg-bg-elevated border border-border-col rounded-xl p-4 min-h-[56px] glow-card">
+            <i data-lucide="file-text" class="w-5 h-5 text-brand shrink-0"></i>
+            <span class="text-text-body text-sm font-medium font-body">Missing terms for tax &amp; payments</span>
+          </div>
+          <div class="flex items-center gap-3 bg-bg-elevated border border-border-col rounded-xl p-4 min-h-[56px] glow-card">
+            <i data-lucide="package" class="w-5 h-5 text-brand shrink-0"></i>
+            <span class="text-text-body text-sm font-medium font-body">Lack of always-on product source</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Full package CTA -->
+      <div class="mt-10 text-center fade-up stagger-3">
+        <p class="text-text-muted text-sm mb-4 font-body">Whatever your pain points — we offer <strong class="text-text-primary">"full package"</strong> solutions</p>
+        <a href="#services" class="btn-gradient inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-heading min-h-[44px]">
+          See Our Services <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       SERVICES (snap-scroll mobile / 2x2 desktop)
+  ═══════════════════════════════════════════ -->
+  <section id="services" class="bg-bg-primary py-16 lg:py-24 border-t border-border-col">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10 fade-up">
+        <p class="text-brand text-xs tracking-[0.2em] uppercase font-medium mb-3 font-body">Our Solutions</p>
+        <h2 class="h2 text-text-primary mb-2">One-stop <span class="text-brand">shoppertainment</span><br>solution provider</h2>
+        <p class="text-text-muted text-sm mt-3 font-body">Four pillars powering your social commerce success</p>
+      </div>
+
+      <!-- Snap scroll on mobile, 2x2 grid on desktop -->
+      <div class="snap-scroll lg:gap-6" id="services-scroll">
+
+        <div class="snap-card service-card bg-bg-surface border border-border-col rounded-2xl p-6 lg:p-8 transition-all duration-300 fade-up stagger-1">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5 shrink-0" style="background:rgba(163,230,53,0.12);">
+            <i data-lucide="handshake" class="w-6 h-6 text-brand"></i>
+          </div>
+          <h3 class="h3 text-text-primary mb-4">Creator Partnership (MCN)</h3>
+          <div class="space-y-3 text-text-body text-sm font-body">
+            <div class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand mt-1.5 shrink-0"></span>
+              <p><strong class="text-text-primary/90">Creator Education</strong> — Top tier, Mid tier, Long-tail training programs</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand mt-1.5 shrink-0"></span>
+              <p><strong class="text-text-primary/90">Creator Income</strong> — Booking, Platform rewards, Affiliate, Business development</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="snap-card service-card bg-bg-surface border border-border-col rounded-2xl p-6 lg:p-8 transition-all duration-300 fade-up stagger-2">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5 shrink-0" style="background:rgba(163,230,53,0.12);">
+            <i data-lucide="video" class="w-6 h-6 text-brand"></i>
+          </div>
+          <h3 class="h3 text-text-primary mb-4">LIVE Operation</h3>
+          <div class="space-y-3 text-text-body text-sm font-body">
+            <div class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand mt-1.5 shrink-0"></span>
+              <p><strong class="text-text-primary/90">Seller Side</strong> — Full operations management for brand livestreams</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand mt-1.5 shrink-0"></span>
+              <p><strong class="text-text-primary/90">Creator Side</strong> — BAU daily streams and Mega event productions</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="snap-card service-card bg-bg-surface border border-border-col rounded-2xl p-6 lg:p-8 transition-all duration-300 fade-up stagger-3">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5 shrink-0" style="background:rgba(163,230,53,0.12);">
+            <i data-lucide="share-2" class="w-6 h-6 text-brand"></i>
+          </div>
+          <h3 class="h3 text-text-primary mb-4">Social Affiliate Community</h3>
+          <div class="space-y-3 text-text-body text-sm font-body">
+            <div class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand mt-1.5 shrink-0"></span>
+              <p><strong class="text-text-primary/90">Content Creation</strong> — Key message, Sub-content, FOMO content, SEO</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand mt-1.5 shrink-0"></span>
+              <p><strong class="text-text-primary/90">Social Outreach</strong> — Community building, Seeding, Ads management</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="snap-card service-card bg-bg-surface border border-border-col rounded-2xl p-6 lg:p-8 transition-all duration-300 fade-up stagger-4">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5 shrink-0" style="background:rgba(163,230,53,0.12);">
+            <i data-lucide="store" class="w-6 h-6 text-brand"></i>
+          </div>
+          <h3 class="h3 text-text-primary mb-4">Seller Enablement</h3>
+          <div class="space-y-3 text-text-body text-sm font-body">
+            <div class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand mt-1.5 shrink-0"></span>
+              <p><strong class="text-text-primary/90">E-commerce</strong> — TikTok Shop, Shopee, Lazada &amp; Shopify management</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand mt-1.5 shrink-0"></span>
+              <p><strong class="text-text-primary/90">Non E-commerce</strong> — Zalo OA &amp; Telesales channels</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Dot indicators (mobile only) -->
+      <div class="flex justify-center gap-2 mt-5 lg:hidden" id="service-dots">
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section divider -->
+  <div class="section-divider"></div>
+
+  <!-- ═══════════════════════════════════════════
+       ECOSYSTEM (SVG triangle visualization)
+  ═══════════════════════════════════════════ -->
+  <section id="ecosystem" class="bg-bg-surface py-16 lg:py-24 border-t border-border-col">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10 fade-up">
+        <p class="text-brand text-xs tracking-[0.2em] uppercase font-medium mb-3 font-body">Our Ecosystem</p>
+        <h2 class="h2 text-text-primary mb-2">Making the most out of<br>our <span class="text-brand">ecosystem</span></h2>
+        <p class="text-text-muted text-sm mt-3 max-w-md mx-auto font-body">A powerful triangle connecting Brands, TingTing Networks, and Creators</p>
+      </div>
+
+      <!-- SVG Triangle — lime accents -->
+      <div class="flex justify-center mb-10 fade-up stagger-1">
+        <svg viewBox="0 0 380 300" class="w-full max-w-sm lg:max-w-md eco-svg" role="img" aria-label="TingTing Networks ecosystem triangle">
+          <!-- Triangle path — lime strokes -->
+          <polygon points="190,20 30,270 350,270" fill="none" stroke="#1E293B" stroke-width="2" stroke-dasharray="8,4"/>
+          <!-- Lime glow lines overlay -->
+          <polygon points="190,20 30,270 350,270" fill="none" stroke="#A3E635" stroke-width="1" stroke-dasharray="8,4" opacity="0.4"/>
+          <!-- Connecting dots at vertices — lime -->
+          <circle cx="190" cy="20"  r="6" fill="#A3E635"/>
+          <circle cx="30"  cy="270" r="6" fill="#A3E635"/>
+          <circle cx="350" cy="270" r="6" fill="#A3E635"/>
+          <!-- Glow circles behind dots -->
+          <circle cx="190" cy="20"  r="12" fill="rgba(163,230,53,0.15)"/>
+          <circle cx="30"  cy="270" r="12" fill="rgba(163,230,53,0.15)"/>
+          <circle cx="350" cy="270" r="12" fill="rgba(163,230,53,0.15)"/>
+          <!-- TTN center badge — lime gradient -->
+          <rect x="152" y="128" width="76" height="38" rx="9" fill="#A3E635"/>
+          <text x="190" y="152" text-anchor="middle" font-size="13" fill="#050510" font-weight="700">TTN</text>
+          <!-- Labels -->
+          <text x="190" y="14" text-anchor="middle" font-size="12" fill="#F0F4F8" font-weight="700">Brands / Sellers</text>
+          <text x="190" y="0" text-anchor="middle" font-size="10" fill="#94A3B8">Source of products</text>
+          <text x="20"  y="292" text-anchor="middle" font-size="12" fill="#F0F4F8" font-weight="700">TingTing</text>
+          <text x="20"  y="304" text-anchor="middle" font-size="12" fill="#F0F4F8" font-weight="700">Networks</text>
+          <text x="360" y="292" text-anchor="middle" font-size="12" fill="#F0F4F8" font-weight="700">Creators</text>
+        </svg>
+      </div>
+
+      <!-- Key benefits — 3-col on desktop -->
+      <div class="grid sm:grid-cols-3 gap-6 max-w-3xl mx-auto fade-up stagger-2">
+        <div class="text-center">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center mx-auto mb-3" style="background:rgba(163,230,53,0.12);">
+            <i data-lucide="building-2" class="w-5 h-5 text-brand"></i>
+          </div>
+          <h4 class="font-heading font-bold text-text-primary text-sm mb-2">Brands / Sellers</h4>
+          <ul class="text-text-muted text-xs space-y-1 font-body">
+            <li>Source of products</li>
+            <li>Huge stream of content</li>
+            <li>Cost-efficient delivery</li>
+          </ul>
+        </div>
+        <div class="text-center">
+          <div class="w-10 h-10 rounded-xl bg-brand flex items-center justify-center mx-auto mb-3">
+            <span class="font-heading font-bold text-bg-primary text-xs">TT</span>
+          </div>
+          <h4 class="font-heading font-bold text-brand text-sm mb-2">TingTing Networks</h4>
+          <ul class="text-text-muted text-xs space-y-1 font-body">
+            <li>Content consistency</li>
+            <li>ROI optimization</li>
+            <li>Creator hub &amp; support</li>
+          </ul>
+        </div>
+        <div class="text-center">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center mx-auto mb-3" style="background:rgba(163,230,53,0.12);">
+            <i data-lucide="mic" class="w-5 h-5 text-brand"></i>
+          </div>
+          <h4 class="font-heading font-bold text-text-primary text-sm mb-2">Creators</h4>
+          <ul class="text-text-muted text-xs space-y-1 font-body">
+            <li>Always-on ready supply</li>
+            <li>Full source of products</li>
+            <li>Sustainable ROI</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       CREATOR HUB (2x2 grid)
+  ═══════════════════════════════════════════ -->
+  <section id="creator-hub" class="bg-bg-primary py-16 lg:py-24 border-t border-border-col">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-10 fade-up">
+        <p class="text-brand text-xs tracking-[0.2em] uppercase font-medium mb-3 font-body">Physical Space</p>
+        <h2 class="h2 text-brand">Creator<br>Hub</h2>
+        <p class="text-text-body text-base mt-3 max-w-md font-body">Our physical space designed for creators to produce, learn, and grow together.</p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3 sm:gap-4 lg:gap-6 fade-up stagger-1">
+
+        <div class="hub-card bg-bg-surface border border-border-col rounded-2xl p-5 lg:p-7 transition-all duration-300">
+          <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style="background:rgba(163,230,53,0.12);">
+            <i data-lucide="package" class="w-5 h-5 text-brand"></i>
+          </div>
+          <h3 class="font-heading font-bold text-text-primary text-sm lg:text-base mb-2">Product Hub</h3>
+          <p class="text-text-muted text-xs lg:text-sm leading-relaxed font-body">Brands send product sampling. Creators pick up and create videos or go LIVE right here.</p>
+        </div>
+
+        <div class="hub-card bg-bg-surface border border-border-col rounded-2xl p-5 lg:p-7 transition-all duration-300">
+          <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style="background:rgba(163,230,53,0.12);">
+            <i data-lucide="presentation" class="w-5 h-5 text-brand"></i>
+          </div>
+          <h3 class="font-heading font-bold text-text-primary text-sm lg:text-base mb-2">Meeting Rooms</h3>
+          <p class="text-text-muted text-xs lg:text-sm leading-relaxed font-body">Training rooms where TingTing Networks trains creators and brands on best practices.</p>
+        </div>
+
+        <div class="hub-card bg-bg-surface border border-border-col rounded-2xl p-5 lg:p-7 transition-all duration-300">
+          <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style="background:rgba(163,230,53,0.12);">
+            <i data-lucide="camera" class="w-5 h-5 text-brand"></i>
+          </div>
+          <h3 class="font-heading font-bold text-text-primary text-sm lg:text-base mb-2">LIVE Studio</h3>
+          <p class="text-text-muted text-xs lg:text-sm leading-relaxed font-body">Professional scene, lighting, and equipment setup for high-quality LIVE productions.</p>
+        </div>
+
+        <div class="hub-card bg-bg-surface border border-border-col rounded-2xl p-5 lg:p-7 transition-all duration-300">
+          <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style="background:rgba(163,230,53,0.12);">
+            <i data-lucide="coffee" class="w-5 h-5 text-brand"></i>
+          </div>
+          <h3 class="font-heading font-bold text-text-primary text-sm lg:text-base mb-2">Co-working Space</h3>
+          <p class="text-text-muted text-xs lg:text-sm leading-relaxed font-body">Creative vibe with good coffee and drinks — a comfortable zone for creators.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section divider -->
+  <div class="section-divider"></div>
+
+  <!-- ═══════════════════════════════════════════
+       CONTACT (action-first)
+  ═══════════════════════════════════════════ -->
+  <section id="contact" class="bg-bg-surface py-16 lg:py-24 border-t border-border-col">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10 fade-up">
+        <p class="text-brand text-xs tracking-[0.2em] uppercase font-medium mb-3 font-body">Get In Touch</p>
+        <h2 class="h2 text-text-primary">Let's Talk</h2>
+        <p class="text-text-body text-base mt-3 max-w-md mx-auto font-body">Ready to grow your social commerce? Reach out via your preferred channel.</p>
+      </div>
+
+      <div class="lg:grid lg:grid-cols-2 lg:gap-16 lg:items-start">
+        <!-- Left: Action buttons + contact details -->
+        <div class="mb-10 lg:mb-0 fade-up stagger-1">
+          <!-- Primary actions (mobile first) -->
+          <div class="space-y-3 mb-8">
+            <a href="https://zalo.me/0901807346" target="_blank" rel="noopener noreferrer"
+               class="flex items-center gap-4 bg-bg-elevated border border-border-col hover:border-brand/50 rounded-2xl px-5 py-4 transition-all duration-200 min-h-[64px] w-full glow-card">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style="background:rgba(163,230,53,0.12);">
+                <i data-lucide="message-circle" class="w-5 h-5 text-brand"></i>
+              </div>
+              <div class="text-left">
+                <div class="text-text-primary font-semibold text-sm font-heading">Chat on Zalo</div>
+                <div class="text-text-muted text-xs font-body">(+84) 901807346</div>
+              </div>
+              <i data-lucide="arrow-right" class="w-4 h-4 text-text-muted ml-auto"></i>
+            </a>
+
+            <a href="mailto:partnership@tingting.asia"
+               class="flex items-center gap-4 bg-bg-elevated border border-border-col hover:border-brand/50 rounded-2xl px-5 py-4 transition-all duration-200 min-h-[64px] w-full glow-card">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style="background:rgba(163,230,53,0.12);">
+                <i data-lucide="mail" class="w-5 h-5 text-brand"></i>
+              </div>
+              <div class="text-left">
+                <div class="text-text-primary font-semibold text-sm font-heading">Email Us</div>
+                <div class="text-text-muted text-xs font-body">partnership@tingting.asia</div>
+              </div>
+              <i data-lucide="arrow-right" class="w-4 h-4 text-text-muted ml-auto"></i>
+            </a>
+
+            <a href="tel:+84901807346"
+               class="flex items-center gap-4 bg-bg-elevated border border-border-col hover:border-brand/50 rounded-2xl px-5 py-4 transition-all duration-200 min-h-[64px] w-full glow-card">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style="background:rgba(163,230,53,0.12);">
+                <i data-lucide="phone" class="w-5 h-5 text-brand"></i>
+              </div>
+              <div class="text-left">
+                <div class="text-text-primary font-semibold text-sm font-heading">Call Now</div>
+                <div class="text-text-muted text-xs font-body">(+84) 901807346</div>
+              </div>
+              <i data-lucide="arrow-right" class="w-4 h-4 text-text-muted ml-auto"></i>
+            </a>
+          </div>
+
+          <!-- Address & website -->
+          <div class="space-y-3">
+            <div class="flex items-center gap-3 text-text-body text-sm font-body">
+              <i data-lucide="map-pin" class="w-4 h-4 text-text-muted shrink-0"></i>
+              <span>25A Tu Xuong, Dist 3, Ho Chi Minh City</span>
+            </div>
+            <div class="flex items-center gap-3 text-text-body text-sm font-body">
+              <i data-lucide="globe" class="w-4 h-4 text-text-muted shrink-0"></i>
+              <a href="https://www.tingting.asia" target="_blank" rel="noopener noreferrer" class="hover:text-brand transition-colors">www.tingting.asia</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Contact form -->
+        <div class="fade-up stagger-2">
+          <div class="text-text-muted text-sm text-center mb-5 flex items-center gap-3 font-body">
+            <span class="flex-1 h-px bg-border-col"></span>
+            <span>or send a message</span>
+            <span class="flex-1 h-px bg-border-col"></span>
+          </div>
+          <form id="contact-form" class="space-y-4" onsubmit="handleFormSubmit(event);" novalidate>
+            <div>
+              <label for="cf-name" class="block text-text-muted text-xs font-medium mb-1.5 uppercase tracking-wide font-body">Name</label>
+              <input type="text" id="cf-name" name="name" required autocomplete="name"
+                     class="form-input w-full bg-bg-elevated border border-border-col rounded-xl px-4 py-3 text-text-primary text-sm placeholder-text-muted transition-colors min-h-[48px] font-body"
+                     placeholder="Your name">
+            </div>
+            <div>
+              <label for="cf-email" class="block text-text-muted text-xs font-medium mb-1.5 uppercase tracking-wide font-body">Email</label>
+              <input type="email" id="cf-email" name="email" required autocomplete="email"
+                     class="form-input w-full bg-bg-elevated border border-border-col rounded-xl px-4 py-3 text-text-primary text-sm placeholder-text-muted transition-colors min-h-[48px] font-body"
+                     placeholder="you@company.com">
+            </div>
+            <div>
+              <label for="cf-company" class="block text-text-muted text-xs font-medium mb-1.5 uppercase tracking-wide font-body">Company</label>
+              <input type="text" id="cf-company" name="company" autocomplete="organization"
+                     class="form-input w-full bg-bg-elevated border border-border-col rounded-xl px-4 py-3 text-text-primary text-sm placeholder-text-muted transition-colors min-h-[48px] font-body"
+                     placeholder="Your company (optional)">
+            </div>
+            <div>
+              <label for="cf-message" class="block text-text-muted text-xs font-medium mb-1.5 uppercase tracking-wide font-body">Message</label>
+              <textarea id="cf-message" name="message" rows="4" required
+                        class="form-input w-full bg-bg-elevated border border-border-col rounded-xl px-4 py-3 text-text-primary text-sm placeholder-text-muted transition-colors resize-none font-body"
+                        placeholder="Tell us about your needs..."></textarea>
+            </div>
+            <button type="submit"
+                    class="btn-gradient w-full py-4 rounded-xl font-heading text-sm min-h-[56px]">
+              Send Message
+            </button>
+            <div id="form-success" class="hidden text-center text-sm py-2 font-body" style="color:#A3E635;">Thank you! We will contact you soon.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
+  <footer class="bg-bg-primary border-t border-border-col py-10 pb-safe lg:pb-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-2">
+          <span class="font-heading font-bold text-xl text-brand">TingTing</span>
+          <span class="font-heading font-bold text-lg text-text-primary/90">networks</span>
+        </div>
+        <p class="text-text-muted text-xs text-center font-body">
+          Content · Creator · Commerce — Where connection brings impact.
+        </p>
+        <p class="text-text-muted text-xs font-body">&copy; 2026 TingTing Networks. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════
+       STICKY MOBILE CTA (above bottom nav)
+  ═══════════════════════════════════════════ -->
+  <div id="sticky-cta" class="fixed left-0 right-0 z-40 lg:hidden px-4 pb-2" style="bottom:calc(56px + env(safe-area-inset-bottom));">
+    <a href="#contact"
+       class="btn-gradient block w-full text-sm text-center py-3.5 rounded-xl font-heading shadow-lg"
+       style="min-height:48px; line-height:1.5; box-shadow: 0 4px 24px rgba(163,230,53,0.3);">
+      Partner With Us
+    </a>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SCRIPTS
+  ═══════════════════════════════════════════ -->
+  <script>
+    // ── Initialize Lucide Icons ──
+    lucide.createIcons();
+
+    // ── Desktop nav: add blur bg on scroll ──
+    const topNav = document.getElementById('top-nav');
+    function updateTopNav() {
+      if (window.scrollY > 60) {
+        topNav.style.background = 'rgba(5,5,16,0.92)';
+        topNav.style.backdropFilter = 'blur(12px)';
+        topNav.style.borderBottom = '1px solid #1E293B';
+      } else {
+        topNav.style.background = 'transparent';
+        topNav.style.backdropFilter = 'none';
+        topNav.style.borderBottom = 'none';
+      }
+    }
+    window.addEventListener('scroll', updateTopNav, { passive: true });
+    updateTopNav();
+
+    // ── Bottom nav: active state on scroll ──
+    const bnavItems = document.querySelectorAll('.bnav-item');
+    const sections = ['hero','services','creator-hub','contact'];
+    function updateBottomNav() {
+      const scrollY = window.scrollY + window.innerHeight / 2;
+      let activeIdx = 0;
+      sections.forEach((id, i) => {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= scrollY) activeIdx = i;
+      });
+      bnavItems.forEach((item, i) => {
+        item.classList.toggle('active', i === activeIdx);
+      });
+    }
+    window.addEventListener('scroll', updateBottomNav, { passive: true });
+    updateBottomNav();
+
+    // ── Sticky mobile CTA: show after hero scrolls out ──
+    const stickyCta = document.getElementById('sticky-cta');
+    const heroSection = document.getElementById('hero');
+    function updateStickyCta() {
+      const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+      if (window.scrollY > heroBottom - 100) {
+        stickyCta.classList.add('visible');
+      } else {
+        stickyCta.classList.remove('visible');
+      }
+    }
+    window.addEventListener('scroll', updateStickyCta, { passive: true });
+
+    // ── Intersection Observer for fade-up animations ──
+    const fadeEls = document.querySelectorAll('.fade-up');
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    fadeEls.forEach(el => fadeObserver.observe(el));
+
+    // ── Counter animation ──
+    const counterEls = document.querySelectorAll('.counter-val');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = parseInt(el.dataset.target, 10);
+        const duration = 1400;
+        const start = performance.now();
+        function tick(now) {
+          const p = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(eased * target);
+          if (p < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+        counterObserver.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    counterEls.forEach(el => counterObserver.observe(el));
+
+    // ── Accordion ──
+    document.querySelectorAll('.accordion-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.accordion-item');
+        const body = item.querySelector('.accordion-body');
+        const icon = btn.querySelector('.accordion-icon');
+        const isOpen = body.classList.contains('open');
+
+        // Close all
+        document.querySelectorAll('.accordion-body').forEach(b => b.classList.remove('open'));
+        document.querySelectorAll('.accordion-icon').forEach(i => i.classList.remove('open'));
+        document.querySelectorAll('.accordion-trigger').forEach(b => b.setAttribute('aria-expanded', 'false'));
+
+        // Toggle clicked
+        if (!isOpen) {
+          body.classList.add('open');
+          icon.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // ── Tab switcher ──
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tab = btn.dataset.tab;
+        // Update buttons
+        document.querySelectorAll('.tab-btn').forEach(b => {
+          b.classList.remove('active');
+          b.classList.add('text-text-muted');
+        });
+        btn.classList.add('active');
+        btn.classList.remove('text-text-muted');
+        // Update panes
+        document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+        document.getElementById('tab-' + tab).classList.add('active');
+      });
+    });
+
+    // ── Services scroll dots ──
+    const servicesScroll = document.getElementById('services-scroll');
+    const dots = document.querySelectorAll('#service-dots .dot');
+    if (servicesScroll && dots.length) {
+      servicesScroll.addEventListener('scroll', () => {
+        const scrollLeft = servicesScroll.scrollLeft;
+        const cardWidth = servicesScroll.querySelector('.snap-card').offsetWidth + 16; // +gap
+        const idx = Math.round(scrollLeft / cardWidth);
+        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+      }, { passive: true });
+    }
+
+    // ── Contact form handler ──
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const success = document.getElementById('form-success');
+      form.querySelectorAll('input, textarea, button').forEach(el => el.disabled = true);
+      success.classList.remove('hidden');
+      setTimeout(() => {
+        form.reset();
+        form.querySelectorAll('input, textarea, button').forEach(el => el.disabled = false);
+        success.classList.add('hidden');
+      }, 4000);
+    }
+  </script>
+
+</body>
+</html>
