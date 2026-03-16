@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TingTing Networks — Content · Creator · Commerce</title>
+  <meta name="description" content="TingTing Networks is Vietnam's one-stop shoppertainment solution provider. We connect brands, creators, and commerce for maximum impact.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#E05A59',
+            'brand-dark': '#C94A49',
+            dark: '#1A1A1A',
+            'dark-light': '#2A2A2A',
+          },
+          fontFamily: {
+            poppins: ['Poppins', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- AOS Animate on Scroll -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; }
+
+    /* Diagonal stripe decorative element */
+    .stripe-decoration::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -5%;
+      width: 200px;
+      height: 140%;
+      background: #E05A59;
+      transform: skewX(-12deg);
+      z-index: 1;
+    }
+    .stripe-decoration::after {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: calc(-5% + 80px);
+      width: 120px;
+      height: 140%;
+      background: #E05A59;
+      transform: skewX(-12deg);
+      z-index: 1;
+    }
+
+    /* Dark section stripe */
+    .stripe-dark::before {
+      background: rgba(224,90,89,0.15);
+    }
+    .stripe-dark::after {
+      background: rgba(224,90,89,0.1);
+    }
+
+    /* White diagonal line */
+    .diagonal-line::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 15%;
+      width: 2px;
+      height: 150%;
+      background: rgba(255,255,255,0.15);
+      transform: rotate(25deg);
+      transform-origin: top left;
+    }
+
+    /* Counter animation */
+    .counter { display: inline-block; }
+
+    /* Mobile menu */
+    .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease; }
+    .mobile-menu.open { transform: translateX(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      [data-aos] { opacity: 1 !important; transform: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+
+<body class="bg-dark text-white font-poppins overflow-x-hidden">
+
+  <!-- ===================== NAVBAR ===================== -->
+  <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 md:h-20">
+        <!-- Logo -->
+        <a href="#hero" class="flex items-center gap-2 z-10">
+          <span class="text-brand font-black text-2xl md:text-3xl">TingTing</span>
+          <span class="font-bold text-lg md:text-xl text-white/90">networks</span>
+        </a>
+
+        <!-- Desktop Nav -->
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#about" class="text-sm text-white/80 hover:text-brand transition-colors duration-200 cursor-pointer">About</a>
+          <a href="#services" class="text-sm text-white/80 hover:text-brand transition-colors duration-200 cursor-pointer">Services</a>
+          <a href="#ecosystem" class="text-sm text-white/80 hover:text-brand transition-colors duration-200 cursor-pointer">Ecosystem</a>
+          <a href="#creator-hub" class="text-sm text-white/80 hover:text-brand transition-colors duration-200 cursor-pointer">Creator Hub</a>
+          <a href="#contact" class="bg-brand hover:bg-brand-dark text-white font-semibold px-6 py-2.5 rounded-lg transition-colors duration-200 cursor-pointer text-sm">Contact Us</a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden z-10 cursor-pointer p-2" id="menu-btn" aria-label="Toggle menu">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+  </nav>
+
+  <!-- Mobile Menu Overlay (outside nav to avoid containment issues) -->
+  <div class="mobile-menu fixed inset-0 z-[60] flex flex-col items-center justify-center gap-8 md:hidden" id="mobile-menu" style="background-color: #1A1A1A;">
+    <button class="absolute top-5 right-5 cursor-pointer p-2" id="menu-close" aria-label="Close menu">
+      <i data-lucide="x" class="w-6 h-6"></i>
+    </button>
+    <a href="#about" class="text-2xl font-bold hover:text-brand transition-colors cursor-pointer nav-link">About</a>
+    <a href="#services" class="text-2xl font-bold hover:text-brand transition-colors cursor-pointer nav-link">Services</a>
+    <a href="#ecosystem" class="text-2xl font-bold hover:text-brand transition-colors cursor-pointer nav-link">Ecosystem</a>
+    <a href="#creator-hub" class="text-2xl font-bold hover:text-brand transition-colors cursor-pointer nav-link">Creator Hub</a>
+    <a href="#contact" class="bg-brand hover:bg-brand-dark text-white font-bold px-8 py-3 rounded-lg transition-colors cursor-pointer nav-link">Contact Us</a>
+  </div>
+
+  <!-- ===================== HERO ===================== -->
+  <section id="hero" class="relative min-h-screen flex items-center overflow-hidden">
+    <!-- Background gradient simulating skyscraper photo -->
+    <div class="absolute inset-0 bg-gradient-to-br from-dark via-dark-light to-dark"></div>
+    <!-- Grid pattern overlay -->
+    <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size: 60px 60px;"></div>
+    <!-- Diagonal stripes -->
+    <div class="absolute top-0 right-0 w-1/3 h-full overflow-hidden">
+      <div class="absolute top-[-10%] right-[5%] w-[180px] h-[120%] bg-brand transform skew-x-[-12deg] opacity-90"></div>
+      <div class="absolute top-[-10%] right-[calc(5%+100px)] w-[100px] h-[120%] bg-brand transform skew-x-[-12deg] opacity-70"></div>
+      <!-- White diagonal lines -->
+      <div class="absolute top-0 right-[3%] w-[2px] h-[120%] bg-white/20 transform rotate-[20deg] origin-top-right"></div>
+      <div class="absolute top-0 right-[calc(3%+200px)] w-[2px] h-[120%] bg-white/20 transform rotate-[20deg] origin-top-right"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+      <div class="max-w-3xl">
+        <h1 class="text-5xl sm:text-6xl lg:text-8xl font-black leading-[0.95] mb-6" data-aos="fade-up">
+          <span class="text-brand">TingTing</span><br>
+          <span class="text-white">networks</span>
+        </h1>
+        <p class="text-white/70 text-sm sm:text-base tracking-[0.2em] uppercase mb-3" data-aos="fade-up" data-aos-delay="100">
+          Content · Creator · Commerce
+        </p>
+        <p class="text-white/60 text-lg sm:text-xl mb-10 max-w-lg" data-aos="fade-up" data-aos-delay="200">
+          Where connection brings impact.
+        </p>
+        <div class="flex flex-wrap gap-4" data-aos="fade-up" data-aos-delay="300">
+          <a href="#contact" class="bg-brand hover:bg-brand-dark text-white font-bold px-8 py-4 rounded-lg transition-colors duration-200 cursor-pointer text-lg">
+            Get Started
+          </a>
+          <a href="#about" class="border-2 border-white/30 hover:border-white text-white font-semibold px-8 py-4 rounded-lg transition-colors duration-200 cursor-pointer text-lg">
+            Learn More
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about" class="relative bg-brand py-20 lg:py-28 overflow-hidden">
+    <div class="diagonal-line"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+        <!-- Left heading -->
+        <div data-aos="fade-right">
+          <h2 class="text-5xl sm:text-6xl lg:text-7xl font-black leading-[0.95] text-white">
+            One page<br>about us
+          </h2>
+        </div>
+
+        <!-- Right: 4 numbered items -->
+        <div class="space-y-10">
+          <div data-aos="fade-up" data-aos-delay="100">
+            <div class="flex items-start gap-5">
+              <span class="text-4xl font-black text-dark/30 shrink-0">01</span>
+              <div>
+                <h3 class="font-bold text-lg mb-2">OPERATIONS</h3>
+                <p class="text-white/90 text-sm leading-relaxed">One of the 1st players of social commerce in Vietnam. Ran 2023's largest Mega LIVE and achieved hat-trick records of the biggest LIVEs in SEA.</p>
+              </div>
+            </div>
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="200">
+            <div class="flex items-start gap-5">
+              <span class="text-4xl font-black text-dark/30 shrink-0">02</span>
+              <div>
+                <h3 class="font-bold text-lg mb-2">COMMUNITY</h3>
+                <p class="text-white/90 text-sm leading-relaxed">Deep knowledge of cultivating and monitoring community networks for Fintech companies and beyond.</p>
+              </div>
+            </div>
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="300">
+            <div class="flex items-start gap-5">
+              <span class="text-4xl font-black text-dark/30 shrink-0">03</span>
+              <div>
+                <h3 class="font-bold text-lg mb-2">PARTNERSHIP: CREATORS x BRANDS</h3>
+                <p class="text-white/90 text-sm leading-relaxed">Clients from everywhere with diversified background from FMCG brands, Entertainment, Media agencies, and Marketing solution teams of E-commerce platforms.</p>
+              </div>
+            </div>
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="400">
+            <div class="flex items-start gap-5">
+              <span class="text-4xl font-black text-dark/30 shrink-0">04</span>
+              <div>
+                <h3 class="font-bold text-lg mb-2">LIVESTREAMING &amp; ASSORTMENT</h3>
+                <p class="text-white/90 text-sm leading-relaxed">Years of experience working as Key Account Managers of E-com/Social commerce platforms and FMCG brands.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BRAND PROBLEMS ===================== -->
+  <section class="relative bg-brand py-20 lg:py-28 overflow-hidden border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-center mb-16 leading-tight" data-aos="fade-up">
+        We understand brand's problems.<br>
+        And more importantly, <span class="underline decoration-dark/30 underline-offset-4">solve them</span>.
+      </h2>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Column 1: Strategy -->
+        <div class="space-y-4">
+          <div class="bg-white/15 backdrop-blur-sm rounded-xl p-5 hover:bg-white/25 transition-colors duration-200 cursor-default" data-aos="fade-up" data-aos-delay="100">
+            <div class="flex items-center gap-3 mb-2">
+              <i data-lucide="target" class="w-5 h-5 text-white/80"></i>
+              <h4 class="font-semibold text-sm">Omni-channel growth strategy</h4>
+            </div>
+          </div>
+          <div class="bg-white/15 backdrop-blur-sm rounded-xl p-5 hover:bg-white/25 transition-colors duration-200 cursor-default" data-aos="fade-up" data-aos-delay="150">
+            <div class="flex items-center gap-3 mb-2">
+              <i data-lucide="trending-down" class="w-5 h-5 text-white/80"></i>
+              <h4 class="font-semibold text-sm">Dropping engagement</h4>
+            </div>
+          </div>
+          <div class="bg-white/15 backdrop-blur-sm rounded-xl p-5 hover:bg-white/25 transition-colors duration-200 cursor-default" data-aos="fade-up" data-aos-delay="200">
+            <div class="flex items-center gap-3 mb-2">
+              <i data-lucide="git-branch" class="w-5 h-5 text-white/80"></i>
+              <h4 class="font-semibold text-sm">Cross-functional communications</h4>
+            </div>
+          </div>
+        </div>
+        <!-- Column 2: Trends -->
+        <div class="space-y-4">
+          <div class="bg-white/15 backdrop-blur-sm rounded-xl p-5 hover:bg-white/25 transition-colors duration-200 cursor-default" data-aos="fade-up" data-aos-delay="100">
+            <div class="flex items-center gap-3 mb-2">
+              <i data-lucide="zap" class="w-5 h-5 text-white/80"></i>
+              <h4 class="font-semibold text-sm">Keep up with trends</h4>
+            </div>
+          </div>
+          <div class="bg-white/15 backdrop-blur-sm rounded-xl p-5 hover:bg-white/25 transition-colors duration-200 cursor-default" data-aos="fade-up" data-aos-delay="150">
+            <div class="flex items-center gap-3 mb-2">
+              <i data-lucide="award" class="w-5 h-5 text-white/80"></i>
+              <h4 class="font-semibold text-sm">Stand out from competition</h4>
+            </div>
+          </div>
+          <div class="bg-white/15 backdrop-blur-sm rounded-xl p-5 hover:bg-white/25 transition-colors duration-200 cursor-default" data-aos="fade-up" data-aos-delay="200">
+            <div class="flex items-center gap-3 mb-2">
+              <i data-lucide="flame" class="w-5 h-5 text-white/80"></i>
+              <h4 class="font-semibold text-sm">Creative burnout</h4>
+            </div>
+          </div>
+        </div>
+        <!-- Column 3: ROI -->
+        <div class="space-y-4">
+          <div class="bg-white/15 backdrop-blur-sm rounded-xl p-5 hover:bg-white/25 transition-colors duration-200 cursor-default" data-aos="fade-up" data-aos-delay="100">
+            <div class="flex items-center gap-3 mb-2">
+              <i data-lucide="bar-chart-3" class="w-5 h-5 text-white/80"></i>
+              <h4 class="font-semibold text-sm">Proving S-com's ROI</h4>
+            </div>
+          </div>
+          <div class="bg-white/15 backdrop-blur-sm rounded-xl p-5 hover:bg-white/25 transition-colors duration-200 cursor-default" data-aos="fade-up" data-aos-delay="150">
+            <div class="flex items-center gap-3 mb-2">
+              <i data-lucide="dollar-sign" class="w-5 h-5 text-white/80"></i>
+              <h4 class="font-semibold text-sm">Make money from talents</h4>
+            </div>
+          </div>
+          <div class="bg-white/15 backdrop-blur-sm rounded-xl p-5 hover:bg-white/25 transition-colors duration-200 cursor-default" data-aos="fade-up" data-aos-delay="200">
+            <div class="flex items-center gap-3 mb-2">
+              <i data-lucide="shield-alert" class="w-5 h-5 text-white/80"></i>
+              <h4 class="font-semibold text-sm">Loss &amp; crisis management</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CREATOR PROBLEMS ===================== -->
+  <section class="relative bg-brand py-20 lg:py-28 overflow-hidden border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-center mb-16 leading-tight" data-aos="fade-up">
+        We are also committed to freeing<br>
+        <span class="underline decoration-dark/30 underline-offset-4">creators</span> from the roadblocks.
+      </h2>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="space-y-4">
+          <div class="bg-white/15 backdrop-blur-sm rounded-xl p-5 hover:bg-white/25 transition-colors duration-200 cursor-default" data-aos="fade-up" data-aos-delay="100">
+            <div class="flex items-center gap-3"><i data-lucide="map" class="w-5 h-5 text-white/80 shrink-0"></i><h4 class="font-semibold text-sm">No clear career roadmap</h4></div>
+          </div>
+          <div class="bg-white/15 backdrop-blur-sm rounded-xl p-5 hover:bg-white/25 transition-colors duration-200 cursor-default" data-aos="fade-up" data-aos-delay="150">
+            <div class="flex items-center gap-3"><i data-lucide="user" class="w-5 h-5 text-white/80 shrink-0"></i><h4 class="font-semibold text-sm">No personal branding strategy</h4></div>
+          </div>
+          <div class="bg-white/15 backdrop-blur-sm rounded-xl p-5 hover:bg-white/25 transition-colors duration-200 cursor-default" data-aos="fade-up" data-aos-delay="200">
+            <div class="flex items-center gap-3"><i data-lucide="layers" class="w-5 h-5 text-white/80 shrink-0"></i><h4 class="font-semibold text-sm">Limited resources for multi-channel</h4></div>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <div class="bg-white/15 backdrop-blur-sm rounded-xl p-5 hover:bg-white/25 transition-colors duration-200 cursor-default" data-aos="fade-up" data-aos-delay="100">
+            <div class="flex items-center gap-3"><i data-lucide="lightbulb" class="w-5 h-5 text-white/80 shrink-0"></i><h4 class="font-semibold text-sm">No supporting creative hub</h4></div>
+          </div>
+          <div class="bg-white/15 backdrop-blur-sm rounded-xl p-5 hover:bg-white/25 transition-colors duration-200 cursor-default" data-aos="fade-up" data-aos-delay="150">
+            <div class="flex items-center gap-3"><i data-lucide="wrench" class="w-5 h-5 text-white/80 shrink-0"></i><h4 class="font-semibold text-sm">Lack of tools and equipment</h4></div>
+          </div>
+          <div class="bg-white/15 backdrop-blur-sm rounded-xl p-5 hover:bg-white/25 transition-colors duration-200 cursor-default" data-aos="fade-up" data-aos-delay="200">
+            <div class="flex items-center gap-3"><i data-lucide="users" class="w-5 h-5 text-white/80 shrink-0"></i><h4 class="font-semibold text-sm">No quality &amp; committed team</h4></div>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <div class="bg-white/15 backdrop-blur-sm rounded-xl p-5 hover:bg-white/25 transition-colors duration-200 cursor-default" data-aos="fade-up" data-aos-delay="100">
+            <div class="flex items-center gap-3"><i data-lucide="wallet" class="w-5 h-5 text-white/80 shrink-0"></i><h4 class="font-semibold text-sm">Limited workforce for monetization</h4></div>
+          </div>
+          <div class="bg-white/15 backdrop-blur-sm rounded-xl p-5 hover:bg-white/25 transition-colors duration-200 cursor-default" data-aos="fade-up" data-aos-delay="150">
+            <div class="flex items-center gap-3"><i data-lucide="file-text" class="w-5 h-5 text-white/80 shrink-0"></i><h4 class="font-semibold text-sm">Missing terms for tax &amp; payments</h4></div>
+          </div>
+          <div class="bg-white/15 backdrop-blur-sm rounded-xl p-5 hover:bg-white/25 transition-colors duration-200 cursor-default" data-aos="fade-up" data-aos-delay="200">
+            <div class="flex items-center gap-3"><i data-lucide="package" class="w-5 h-5 text-white/80 shrink-0"></i><h4 class="font-semibold text-sm">Lack of always-on source product</h4></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FULL PACKAGE CTA ===================== -->
+  <section class="relative bg-brand py-20 lg:py-32 overflow-hidden border-t border-white/10">
+    <!-- Dark triangle decoration -->
+    <div class="absolute top-0 right-0 w-0 h-0 border-t-[0] border-r-[50vw] border-b-[100vh] border-l-0 border-transparent border-r-dark/80 hidden lg:block"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="max-w-2xl" data-aos="fade-up">
+        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.05] mb-8">
+          Whatever your painpoints, we offer "full package" solutions
+        </h2>
+        <a href="#services" class="inline-block bg-dark hover:bg-dark-light text-white font-bold px-8 py-4 rounded-lg transition-colors duration-200 cursor-pointer text-lg">
+          Get to know
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SERVICES ===================== -->
+  <section id="services" class="relative bg-dark py-20 lg:py-28 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-center mb-4 leading-tight" data-aos="fade-up">
+        We are one-stop<br>
+        <span class="text-brand">shoppertainment</span> solution provider
+      </h2>
+      <p class="text-white/50 text-center mb-16 max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+        Four pillars powering your social commerce success
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
+        <!-- Service 1: MCN -->
+        <div class="bg-dark-light border border-white/10 rounded-2xl p-8 hover:border-brand/50 transition-all duration-300 cursor-default group" data-aos="fade-up" data-aos-delay="100">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 rounded-xl bg-brand/20 flex items-center justify-center group-hover:bg-brand/30 transition-colors">
+              <i data-lucide="handshake" class="w-6 h-6 text-brand"></i>
+            </div>
+            <h3 class="text-xl font-bold">Creator Partnership (MCN)</h3>
+          </div>
+          <div class="space-y-3 text-white/70 text-sm">
+            <div class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand mt-1.5 shrink-0"></span>
+              <p><strong class="text-white/90">Creator Education</strong> — Top tier, Mid tier, Long-tail training programs</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand mt-1.5 shrink-0"></span>
+              <p><strong class="text-white/90">Creator Income</strong> — Booking, Platform rewards, Affiliate, Business development</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 2: LIVE -->
+        <div class="bg-dark-light border border-white/10 rounded-2xl p-8 hover:border-brand/50 transition-all duration-300 cursor-default group" data-aos="fade-up" data-aos-delay="200">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 rounded-xl bg-brand/20 flex items-center justify-center group-hover:bg-brand/30 transition-colors">
+              <i data-lucide="video" class="w-6 h-6 text-brand"></i>
+            </div>
+            <h3 class="text-xl font-bold">LIVE Operation</h3>
+          </div>
+          <div class="space-y-3 text-white/70 text-sm">
+            <div class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand mt-1.5 shrink-0"></span>
+              <p><strong class="text-white/90">Seller Side</strong> — Full operations management for brand livestreams</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand mt-1.5 shrink-0"></span>
+              <p><strong class="text-white/90">Creator Side</strong> — BAU daily streams and Mega event productions</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 3: Social Affiliate -->
+        <div class="bg-dark-light border border-white/10 rounded-2xl p-8 hover:border-brand/50 transition-all duration-300 cursor-default group" data-aos="fade-up" data-aos-delay="300">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 rounded-xl bg-brand/20 flex items-center justify-center group-hover:bg-brand/30 transition-colors">
+              <i data-lucide="share-2" class="w-6 h-6 text-brand"></i>
+            </div>
+            <h3 class="text-xl font-bold">Social Affiliate Community</h3>
+          </div>
+          <div class="space-y-3 text-white/70 text-sm">
+            <div class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand mt-1.5 shrink-0"></span>
+              <p><strong class="text-white/90">Content Creation</strong> — Key message, Sub-content, FOMO content, SEO</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand mt-1.5 shrink-0"></span>
+              <p><strong class="text-white/90">Social Outreach</strong> — Community building, Seeding, Ads management</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 4: Seller Enablement -->
+        <div class="bg-dark-light border border-white/10 rounded-2xl p-8 hover:border-brand/50 transition-all duration-300 cursor-default group" data-aos="fade-up" data-aos-delay="400">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 rounded-xl bg-brand/20 flex items-center justify-center group-hover:bg-brand/30 transition-colors">
+              <i data-lucide="store" class="w-6 h-6 text-brand"></i>
+            </div>
+            <h3 class="text-xl font-bold">Seller Enablement</h3>
+          </div>
+          <div class="space-y-3 text-white/70 text-sm">
+            <div class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand mt-1.5 shrink-0"></span>
+              <p><strong class="text-white/90">E-commerce</strong> — TikTok Shop, Shopee, Lazada &amp; Shopify management</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand mt-1.5 shrink-0"></span>
+              <p><strong class="text-white/90">Non E-commerce</strong> — Zalo OA &amp; Telesales channels</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ECOSYSTEM ===================== -->
+  <section id="ecosystem" class="relative bg-dark py-20 lg:py-28 overflow-hidden border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-center mb-4 leading-tight" data-aos="fade-up">
+        Making the most out of<br>our <span class="text-brand">ecosystem</span>
+      </h2>
+      <p class="text-white/50 text-center mb-16 max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+        A powerful triangle connecting Brands, Creators, and TingTing Networks
+      </p>
+
+      <div class="grid lg:grid-cols-3 gap-8 items-start">
+        <!-- Brands/Sellers -->
+        <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+          <div class="w-20 h-20 rounded-2xl bg-brand/20 flex items-center justify-center mx-auto mb-6">
+            <i data-lucide="building-2" class="w-10 h-10 text-brand"></i>
+          </div>
+          <h3 class="text-2xl font-black mb-4">Brands / Sellers</h3>
+          <ul class="text-white/70 text-sm space-y-2">
+            <li>Source of products</li>
+            <li>Huge stream of content</li>
+            <li>Cost-efficient delivery operation</li>
+          </ul>
+        </div>
+
+        <!-- TingTing Networks (center) -->
+        <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+          <div class="w-20 h-20 rounded-2xl bg-brand flex items-center justify-center mx-auto mb-6">
+            <span class="text-white font-black text-xl">TT</span>
+          </div>
+          <h3 class="text-2xl font-black mb-4 text-brand">TingTing Networks</h3>
+          <ul class="text-white/70 text-sm space-y-2">
+            <li>Content consistency</li>
+            <li>ROI optimization</li>
+            <li>Creator hub &amp; support</li>
+          </ul>
+          <!-- Connection lines (SVG) -->
+          <div class="hidden lg:flex justify-center mt-8">
+            <svg width="300" height="60" viewBox="0 0 300 60" class="text-brand/40">
+              <line x1="0" y1="30" x2="120" y2="5" stroke="currentColor" stroke-width="2" stroke-dasharray="6,4"/>
+              <line x1="180" y1="5" x2="300" y2="30" stroke="currentColor" stroke-width="2" stroke-dasharray="6,4"/>
+              <line x1="80" y1="55" x2="220" y2="55" stroke="currentColor" stroke-width="2" stroke-dasharray="6,4"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Creators -->
+        <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+          <div class="w-20 h-20 rounded-2xl bg-brand/20 flex items-center justify-center mx-auto mb-6">
+            <i data-lucide="mic" class="w-10 h-10 text-brand"></i>
+          </div>
+          <h3 class="text-2xl font-black mb-4">Creators</h3>
+          <ul class="text-white/70 text-sm space-y-2">
+            <li>Always-on ready supply</li>
+            <li>Full source of products</li>
+            <li>Sustainable ROI from stable workload</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== STATS ===================== -->
+  <section class="relative bg-brand py-16 lg:py-20 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+        <div data-aos="zoom-in" data-aos-delay="100">
+          <div class="text-4xl sm:text-5xl font-black mb-2">
+            <span class="counter" data-target="100">0</span>+
+          </div>
+          <p class="text-white/80 text-sm font-medium">Brand Partners</p>
+        </div>
+        <div data-aos="zoom-in" data-aos-delay="200">
+          <div class="text-4xl sm:text-5xl font-black mb-2">
+            <span class="counter" data-target="500">0</span>+
+          </div>
+          <p class="text-white/80 text-sm font-medium">Active Creators</p>
+        </div>
+        <div data-aos="zoom-in" data-aos-delay="300">
+          <div class="text-4xl sm:text-5xl font-black mb-2">
+            #<span class="counter" data-target="1">0</span>
+          </div>
+          <p class="text-white/80 text-sm font-medium">Mega LIVE in SEA</p>
+        </div>
+        <div data-aos="zoom-in" data-aos-delay="400">
+          <div class="text-4xl sm:text-5xl font-black mb-2">
+            <span class="counter" data-target="4">0</span>
+          </div>
+          <p class="text-white/80 text-sm font-medium">Verticals Covered</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CREATOR HUB ===================== -->
+  <section id="creator-hub" class="relative bg-dark py-20 lg:py-28 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-16" data-aos="fade-up">
+        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black text-brand leading-[0.95] mb-4">Creator<br>hub</h2>
+        <p class="text-white/60 max-w-md">Our physical space designed for creators to produce, learn, and grow.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-6 lg:gap-8">
+        <!-- Product Hub -->
+        <div class="bg-dark-light border border-white/10 rounded-2xl p-8 hover:border-brand/30 transition-all duration-300 cursor-default group" data-aos="fade-up" data-aos-delay="100">
+          <div class="w-12 h-12 rounded-xl bg-brand/20 flex items-center justify-center mb-5 group-hover:bg-brand/30 transition-colors">
+            <i data-lucide="package" class="w-6 h-6 text-brand"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Product Hub</h3>
+          <p class="text-white/60 text-sm leading-relaxed">Brands send product sampling to be displayed. Creators pick up and create videos or go LIVE right here.</p>
+        </div>
+
+        <!-- Meeting Rooms -->
+        <div class="bg-dark-light border border-white/10 rounded-2xl p-8 hover:border-brand/30 transition-all duration-300 cursor-default group" data-aos="fade-up" data-aos-delay="200">
+          <div class="w-12 h-12 rounded-xl bg-brand/20 flex items-center justify-center mb-5 group-hover:bg-brand/30 transition-colors">
+            <i data-lucide="presentation" class="w-6 h-6 text-brand"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Meeting Rooms</h3>
+          <p class="text-white/60 text-sm leading-relaxed">Meeting and training rooms where TingTing Networks trains creators and brands on best practices.</p>
+        </div>
+
+        <!-- LIVE Studio -->
+        <div class="bg-dark-light border border-white/10 rounded-2xl p-8 hover:border-brand/30 transition-all duration-300 cursor-default group" data-aos="fade-up" data-aos-delay="300">
+          <div class="w-12 h-12 rounded-xl bg-brand/20 flex items-center justify-center mb-5 group-hover:bg-brand/30 transition-colors">
+            <i data-lucide="camera" class="w-6 h-6 text-brand"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">LIVE Studio Setup</h3>
+          <p class="text-white/60 text-sm leading-relaxed">Professional scene, lighting, and equipment setup for high-quality LIVE productions.</p>
+        </div>
+
+        <!-- Co-working Space -->
+        <div class="bg-dark-light border border-white/10 rounded-2xl p-8 hover:border-brand/30 transition-all duration-300 cursor-default group" data-aos="fade-up" data-aos-delay="400">
+          <div class="w-12 h-12 rounded-xl bg-brand/20 flex items-center justify-center mb-5 group-hover:bg-brand/30 transition-colors">
+            <i data-lucide="coffee" class="w-6 h-6 text-brand"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Co-working Space</h3>
+          <p class="text-white/60 text-sm leading-relaxed">Creative vibe with good coffee and drinks to create a comfortable zone for creators.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section id="contact" class="relative bg-brand py-20 lg:py-28 overflow-hidden">
+    <!-- Decorative stripes -->
+    <div class="absolute top-0 left-0 w-1/3 h-full overflow-hidden hidden lg:block">
+      <div class="absolute top-[-10%] left-[-5%] w-[180px] h-[120%] bg-dark/20 transform skew-x-[12deg]"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <!-- Left: Heading -->
+        <div data-aos="fade-right">
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-[0.95] mb-6">Contact Us</h2>
+          <p class="text-white/80 text-lg mb-10 max-w-md">Ready to grow your social commerce? Let's talk about how TingTing Networks can help.</p>
+
+          <div class="space-y-6">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-dark rounded-xl flex items-center justify-center shrink-0">
+                <i data-lucide="phone" class="w-5 h-5 text-white"></i>
+              </div>
+              <div>
+                <p class="font-bold text-sm">Phone</p>
+                <p class="text-white/80 text-sm">(+84) 901807346</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-dark rounded-xl flex items-center justify-center shrink-0">
+                <i data-lucide="mail" class="w-5 h-5 text-white"></i>
+              </div>
+              <div>
+                <p class="font-bold text-sm">E-Mail</p>
+                <p class="text-white/80 text-sm">partnership@tingting.asia</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-dark rounded-xl flex items-center justify-center shrink-0">
+                <i data-lucide="globe" class="w-5 h-5 text-white"></i>
+              </div>
+              <div>
+                <p class="font-bold text-sm">Website</p>
+                <p class="text-white/80 text-sm">www.tingting.asia</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-dark rounded-xl flex items-center justify-center shrink-0">
+                <i data-lucide="map-pin" class="w-5 h-5 text-white"></i>
+              </div>
+              <div>
+                <p class="font-bold text-sm">Address</p>
+                <p class="text-white/80 text-sm">25A Tu Xuong, Dist 3, HCMC</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Contact Form -->
+        <div data-aos="fade-left">
+          <form class="bg-white rounded-2xl p-8 shadow-2xl" onsubmit="event.preventDefault(); alert('Thank you! We will contact you soon.');">
+            <h3 class="text-dark font-bold text-xl mb-6">Send us a message</h3>
+            <div class="space-y-4">
+              <div>
+                <label for="name" class="block text-dark/70 text-sm font-medium mb-1">Your Name</label>
+                <input type="text" id="name" required class="w-full px-4 py-3 rounded-lg border border-gray-200 text-dark text-sm focus:outline-none focus:ring-2 focus:ring-brand/50 focus:border-brand transition-colors" placeholder="John Doe">
+              </div>
+              <div>
+                <label for="email" class="block text-dark/70 text-sm font-medium mb-1">Email</label>
+                <input type="email" id="email" required class="w-full px-4 py-3 rounded-lg border border-gray-200 text-dark text-sm focus:outline-none focus:ring-2 focus:ring-brand/50 focus:border-brand transition-colors" placeholder="john@company.com">
+              </div>
+              <div>
+                <label for="company" class="block text-dark/70 text-sm font-medium mb-1">Company</label>
+                <input type="text" id="company" class="w-full px-4 py-3 rounded-lg border border-gray-200 text-dark text-sm focus:outline-none focus:ring-2 focus:ring-brand/50 focus:border-brand transition-colors" placeholder="Your Company">
+              </div>
+              <div>
+                <label for="message" class="block text-dark/70 text-sm font-medium mb-1">Message</label>
+                <textarea id="message" rows="4" required class="w-full px-4 py-3 rounded-lg border border-gray-200 text-dark text-sm focus:outline-none focus:ring-2 focus:ring-brand/50 focus:border-brand transition-colors resize-none" placeholder="Tell us about your needs..."></textarea>
+              </div>
+              <button type="submit" class="w-full bg-brand hover:bg-brand-dark text-white font-bold py-3.5 rounded-lg transition-colors duration-200 cursor-pointer text-sm">
+                Send Message
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="bg-dark border-t border-white/10 py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-2">
+          <span class="text-brand font-black text-xl">TingTing</span>
+          <span class="font-bold text-white/90">networks</span>
+        </div>
+        <p class="text-white/40 text-sm text-center">
+          Content · Creator · Commerce — Where connection brings impact.
+        </p>
+        <p class="text-white/30 text-xs">
+          &copy; 2026 TingTing Networks. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================== SCRIPTS ===================== -->
+  <!-- AOS Init -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 700,
+      easing: 'ease-out-cubic',
+      once: true,
+      offset: 80,
+    });
+
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Navbar background on scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('bg-dark/95', 'backdrop-blur-md', 'shadow-lg');
+      } else {
+        navbar.classList.remove('bg-dark/95', 'backdrop-blur-md', 'shadow-lg');
+      }
+    });
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const menuClose = document.getElementById('menu-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+    menuClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+
+    // Counter animation with Intersection Observer
+    const counters = document.querySelectorAll('.counter');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const counter = entry.target;
+          const target = parseInt(counter.getAttribute('data-target'));
+          const duration = 1500;
+          const start = performance.now();
+
+          function animate(currentTime) {
+            const elapsed = currentTime - start;
+            const progress = Math.min(elapsed / duration, 1);
+            // Ease out cubic
+            const eased = 1 - Math.pow(1 - progress, 3);
+            counter.textContent = Math.round(eased * target);
+            if (progress < 1) requestAnimationFrame(animate);
+          }
+          requestAnimationFrame(animate);
+          counterObserver.unobserve(counter);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    counters.forEach(c => counterObserver.observe(c));
+  </script>
+</body>
+</html>
