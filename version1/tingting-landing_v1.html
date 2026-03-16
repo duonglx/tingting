@@ -1,0 +1,1763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TingTing Networks — Content · Creator · Commerce</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E8504A;
+    --red-dark: #c73d37;
+    --red-glow: rgba(232,80,74,0.25);
+    --black: #0a0a0a;
+    --dark: #111111;
+    --dark2: #1a1a1a;
+    --grey: #2a2a2a;
+    --text: #ffffff;
+    --muted: #888888;
+    --light: #cccccc;
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 400;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* CUSTOM CURSOR */
+  .cursor {
+    width: 12px; height: 12px;
+    background: var(--red);
+    border-radius: 50%;
+    position: fixed; top:0; left:0;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.15s ease;
+    mix-blend-mode: normal;
+  }
+  .cursor-ring {
+    width: 40px; height: 40px;
+    border: 1.5px solid rgba(232,80,74,0.5);
+    border-radius: 50%;
+    position: fixed; top:0; left:0;
+    pointer-events: none;
+    z-index: 9998;
+    transition: all 0.35s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+  .cursor.hover { transform: scale(2.5); background: var(--red); }
+  .cursor-ring.hover { transform: scale(0); opacity:0; }
+
+  /* NAV */
+  nav {
+    position: fixed; top:0; left:0; right:0;
+    z-index: 100;
+    padding: 24px 64px;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: background 0.4s, padding 0.4s;
+  }
+  nav.scrolled {
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(16px);
+    padding: 16px 64px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .nav-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    letter-spacing: -0.5px;
+    text-decoration: none;
+    color: var(--text);
+  }
+  .nav-logo span { color: var(--red); }
+  .nav-links { display: flex; gap: 40px; list-style: none; }
+  .nav-links a {
+    color: var(--light);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--red); }
+  .nav-cta {
+    background: var(--red);
+    color: white;
+    padding: 10px 28px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    transition: background 0.2s, transform 0.2s;
+  }
+  .nav-cta:hover { background: var(--red-dark); transform: translateY(-1px); }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset:0;
+    background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(232,80,74,0.06) 0%, transparent 60%),
+                radial-gradient(ellipse 40% 40% at 10% 80%, rgba(232,80,74,0.04) 0%, transparent 50%),
+                var(--black);
+  }
+
+  /* Diagonal red slashes */
+  .slash {
+    position: absolute;
+    width: 3px;
+    height: 200%;
+    background: linear-gradient(to bottom, transparent, var(--red), transparent);
+    transform-origin: center;
+    opacity: 0.6;
+  }
+  .slash-1 { right: 32%; top: -50%; transform: rotate(20deg); opacity: 0.3; }
+  .slash-2 { right: 28%; top: -50%; transform: rotate(20deg); opacity: 0.15; width: 1.5px; }
+  .slash-3 { right: 22%; top: -50%; transform: rotate(20deg); opacity: 0.08; width: 1px; }
+
+  /* Big "4" watermark */
+  .hero-watermark {
+    position: absolute;
+    right: -2%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: min(45vw, 520px);
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(232,80,74,0.08);
+    line-height: 1;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 140px 64px 80px;
+  }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s ease forwards;
+  }
+  .hero-eyebrow-line {
+    width: 48px; height: 1px;
+    background: var(--red);
+  }
+  .hero-eyebrow span {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 600;
+  }
+
+  .hero-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(64px, 8vw, 110px);
+    line-height: 0.92;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.35s ease forwards;
+  }
+  .hero-title .red { color: var(--red); }
+  .hero-title .outline {
+    color: transparent;
+    -webkit-text-stroke: 2px white;
+  }
+
+  .hero-sub {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--light);
+    max-width: 420px;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.5s ease forwards;
+  }
+  .hero-sub strong { color: var(--red); font-weight: 600; }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.65s ease forwards;
+  }
+
+  .btn-primary {
+    background: var(--red);
+    color: white;
+    padding: 16px 40px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset:0;
+    background: rgba(255,255,255,0.15);
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+  }
+  .btn-primary:hover::after { transform: translateX(0); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(232,80,74,0.35); }
+
+  .btn-ghost {
+    color: white;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--red); }
+  .btn-ghost svg { transition: transform 0.2s; }
+  .btn-ghost:hover svg { transform: translateX(4px); }
+
+  /* Stats ticker in hero */
+  .hero-stats {
+    position: absolute;
+    bottom: 0; left:0; right:0;
+    z-index: 3;
+    display: flex;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    opacity: 0;
+    animation: fadeUp 0.9s 0.8s ease forwards;
+  }
+  .stat-item {
+    flex: 1;
+    padding: 24px 40px;
+    border-right: 1px solid rgba(255,255,255,0.07);
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-item:hover { background: rgba(232,80,74,0.04); }
+  .stat-item::before {
+    content: '';
+    position: absolute;
+    top:0; left:0; right:0;
+    height: 2px;
+    background: var(--red);
+    transform: scaleX(0);
+    transition: transform 0.4s;
+    transform-origin: left;
+  }
+  .stat-item:hover::before { transform: scaleX(1); }
+  .stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 36px;
+    color: var(--red);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label { font-size: 12px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+
+  /* SECTION BASE */
+  section { position: relative; overflow: hidden; }
+
+  .section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .section-tag span {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 600;
+  }
+  .section-tag-num {
+    width: 28px; height: 28px;
+    border: 1px solid rgba(232,80,74,0.4);
+    color: var(--red);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    display: grid;
+    place-items: center;
+    clip-path: polygon(4px 0%, 100% 0%, calc(100% - 4px) 100%, 0% 100%);
+  }
+
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(40px, 5vw, 72px);
+    text-transform: uppercase;
+    line-height: 0.95;
+    letter-spacing: -1px;
+  }
+  .section-title .accent { color: var(--red); }
+
+  /* ABOUT */
+  #about {
+    padding: 120px 64px;
+    background: var(--dark);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .about-left {}
+  .about-desc {
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--light);
+    margin-top: 32px;
+    margin-bottom: 48px;
+    max-width: 520px;
+  }
+
+  .expertise-list { display: flex; flex-direction: column; gap: 2px; }
+  .exp-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 18px 24px;
+    border: 1px solid rgba(255,255,255,0.05);
+    background: var(--dark2);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .exp-item::before {
+    content: '';
+    position: absolute;
+    left:0; top:0; bottom:0;
+    width: 2px;
+    background: var(--red);
+    transform: scaleY(0);
+    transition: transform 0.3s;
+  }
+  .exp-item:hover { border-color: rgba(232,80,74,0.2); background: rgba(232,80,74,0.03); }
+  .exp-item:hover::before { transform: scaleY(1); }
+  .exp-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 28px;
+    color: var(--red);
+    min-width: 60px;
+    line-height: 1;
+  }
+  .exp-text { font-size: 14px; color: var(--light); line-height: 1.5; }
+  .exp-text strong { color: white; display: block; margin-bottom: 2px; font-size: 15px; }
+
+  .about-right { padding-top: 80px; }
+  .about-card-big {
+    background: var(--dark2);
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .about-card-big::after {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 160px; height: 160px;
+    border: 40px solid rgba(232,80,74,0.08);
+    border-radius: 50%;
+  }
+  .big-card-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  .big-card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 28px;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+  .big-card-text {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--light);
+  }
+  .big-card-separator {
+    width: 100%; height: 1px;
+    background: rgba(255,255,255,0.06);
+    margin: 32px 0;
+  }
+  .big-card-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    padding: 6px 16px;
+    border: 1px solid rgba(232,80,74,0.3);
+    color: var(--red);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  }
+
+  /* PROBLEMS */
+  #problems {
+    padding: 120px 64px;
+    background: var(--black);
+  }
+  .problems-inner { max-width: 1280px; margin: 0 auto; }
+  .problems-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 72px;
+    gap: 40px;
+  }
+  .problems-header-right {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 320px;
+    text-align: right;
+  }
+
+  .problems-tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 48px;
+  }
+  .prob-tab {
+    padding: 12px 32px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--muted);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    transition: all 0.25s;
+  }
+  .prob-tab.active {
+    background: var(--red);
+    border-color: var(--red);
+    color: white;
+  }
+  .prob-tab:hover:not(.active) { border-color: rgba(232,80,74,0.4); color: var(--light); }
+
+  .prob-panel { display: none; }
+  .prob-panel.active { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+
+  .prob-card {
+    padding: 36px 32px;
+    background: var(--dark2);
+    border: 1px solid rgba(255,255,255,0.04);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  .prob-card:hover {
+    background: rgba(232,80,74,0.04);
+    border-color: rgba(232,80,74,0.15);
+    transform: translateY(-4px);
+  }
+  .prob-icon {
+    width: 48px; height: 48px;
+    background: rgba(232,80,74,0.1);
+    display: grid;
+    place-items: center;
+    margin-bottom: 20px;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    font-size: 22px;
+  }
+  .prob-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+  }
+  .prob-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .prob-card-num {
+    position: absolute;
+    top: 16px; right: 20px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 52px;
+    color: rgba(255,255,255,0.03);
+    line-height: 1;
+  }
+
+  /* SOLUTIONS */
+  #solutions {
+    padding: 120px 64px;
+    background: var(--dark);
+  }
+  .solutions-inner { max-width: 1280px; margin: 0 auto; }
+  .solutions-intro {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+  .solutions-intro .section-tag { justify-content: center; }
+  .solutions-intro .section-title { margin-bottom: 20px; }
+  .solutions-intro p { font-size: 16px; color: var(--muted); max-width: 480px; margin: 0 auto; }
+
+  .solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .sol-card {
+    padding: 48px 36px;
+    background: var(--dark2);
+    border: 1px solid rgba(255,255,255,0.05);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.35s;
+  }
+  .sol-card:hover {
+    background: var(--dark);
+    border-color: rgba(232,80,74,0.2);
+  }
+  .sol-card::before {
+    content: '';
+    position: absolute;
+    top:0; left:0; right:0;
+    height: 3px;
+    background: var(--red);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s;
+  }
+  .sol-card:hover::before { transform: scaleX(1); }
+  .sol-card-icon {
+    font-size: 32px;
+    margin-bottom: 24px;
+    display: block;
+  }
+  .sol-card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+    line-height: 1.1;
+  }
+  .sol-card-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  .sol-features {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .sol-feat {
+    font-size: 12px;
+    color: var(--light);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .sol-feat::before {
+    content: '';
+    width: 16px; height: 1px;
+    background: var(--red);
+    flex-shrink: 0;
+  }
+
+  /* ECOSYSTEM */
+  #ecosystem {
+    padding: 120px 64px;
+    background: var(--red);
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+  .eco-bg-shape {
+    position: absolute;
+    top: -80px; left: -80px;
+    width: 300px; height: 300px;
+    background: rgba(0,0,0,0.15);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    transform: rotate(20deg);
+  }
+  .eco-bg-shape2 {
+    position: absolute;
+    bottom: -60px; right: -60px;
+    width: 240px; height: 240px;
+    background: rgba(0,0,0,0.1);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    transform: rotate(-30deg);
+  }
+  .eco-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  .eco-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 80px;
+  }
+  .eco-header-left .section-title { color: white; }
+  .eco-header-left .section-title .accent { color: rgba(0,0,0,0.4); -webkit-text-stroke: 1px black; }
+  .eco-sub {
+    font-size: 16px;
+    opacity: 0.8;
+    max-width: 300px;
+    line-height: 1.6;
+    text-align: right;
+  }
+
+  .eco-triangle-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    min-height: 480px;
+    margin: 0 auto;
+    max-width: 900px;
+  }
+  /* Triangle using CSS */
+  .eco-tri {
+    position: absolute;
+    width: 0; height: 0;
+    border-left: 220px solid transparent;
+    border-right: 220px solid transparent;
+    border-bottom: 380px solid rgba(0,0,0,0.2);
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .eco-tri-inner {
+    position: absolute;
+    width: 0; height: 0;
+    border-left: 190px solid transparent;
+    border-right: 190px solid transparent;
+    border-bottom: 328px solid var(--red);
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%) translateY(26px);
+  }
+
+  .eco-node {
+    position: absolute;
+    text-align: center;
+  }
+  .eco-node-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    line-height: 1;
+    display: block;
+    margin-bottom: 12px;
+    color: black;
+  }
+  .eco-node-top { top: -10px; left: 50%; transform: translateX(-50%); }
+  .eco-node-bl { bottom: 0; left: 0; text-align: left; }
+  .eco-node-br { bottom: 0; right: 0; text-align: right; }
+
+  .eco-node-list {
+    list-style: none;
+    font-size: 13px;
+    opacity: 0.85;
+    line-height: 1.8;
+  }
+  .eco-node-list li::before { content: '→ '; opacity: 0.6; }
+
+  /* CREATOR HUB */
+  #hub {
+    padding: 120px 64px;
+    background: var(--black);
+  }
+  .hub-inner { max-width: 1280px; margin: 0 auto; }
+  .hub-header { margin-bottom: 64px; }
+  .hub-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+  .hub-card {
+    padding: 56px 48px;
+    background: var(--dark2);
+    border: 1px solid rgba(255,255,255,0.05);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.35s;
+  }
+  .hub-card:hover {
+    border-color: rgba(232,80,74,0.15);
+  }
+  .hub-card-accent {
+    position: absolute;
+    top:0; right:0;
+    width: 120px; height: 120px;
+    background: radial-gradient(circle, rgba(232,80,74,0.12) 0%, transparent 70%);
+  }
+  .hub-card-emoji { font-size: 40px; margin-bottom: 24px; display: block; }
+  .hub-card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 32px;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .hub-card-title span { color: var(--red); }
+  .hub-card-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+  .hub-card-bar {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--grey);
+    overflow: hidden;
+  }
+  .hub-card-bar-fill {
+    height: 100%;
+    background: var(--red);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease;
+  }
+  .hub-card:hover .hub-card-bar-fill { transform: scaleX(1); }
+
+  /* CONTACT */
+  #contact {
+    padding: 120px 64px;
+    background: var(--dark);
+  }
+  .contact-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .contact-left {}
+  .contact-headline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(48px, 5vw, 80px);
+    text-transform: uppercase;
+    line-height: 0.95;
+    letter-spacing: -1px;
+    margin: 24px 0 40px;
+  }
+  .contact-headline .red { color: var(--red); }
+  .contact-headline .outline {
+    color: transparent;
+    -webkit-text-stroke: 2px white;
+  }
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 18px 24px;
+    background: var(--dark2);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-left: 3px solid var(--red);
+    text-decoration: none;
+    color: var(--light);
+    transition: all 0.25s;
+  }
+  .contact-row:hover {
+    background: rgba(232,80,74,0.05);
+    color: white;
+    transform: translateX(4px);
+  }
+  .contact-row-icon {
+    width: 40px; height: 40px;
+    background: rgba(232,80,74,0.12);
+    display: grid;
+    place-items: center;
+    font-size: 18px;
+    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+    flex-shrink: 0;
+  }
+  .contact-row-label { font-size: 11px; color: var(--red); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 2px; font-weight: 600; }
+  .contact-row-val { font-size: 15px; font-weight: 500; }
+
+  .contact-right {}
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .form-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .form-group input, .form-group select, .form-group textarea {
+    background: var(--dark2);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: white;
+    padding: 14px 18px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    transition: border-color 0.25s;
+    outline: none;
+    resize: none;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--red);
+  }
+  .form-group select { cursor: pointer; }
+  .form-group select option { background: var(--dark2); }
+  .btn-submit {
+    background: var(--red);
+    color: white;
+    padding: 16px 40px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: none;
+    clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+    cursor: pointer;
+    transition: all 0.25s;
+    width: 100%;
+  }
+  .btn-submit:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(232,80,74,0.3); }
+
+  /* FOOTER */
+  footer {
+    background: var(--black);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 32px 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+    color: white;
+  }
+  .footer-logo span { color: var(--red); }
+  .footer-copy { font-size: 12px; color: var(--muted); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--red); }
+
+  /* SCROLL REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* Diagonal stripe accent for sections */
+  .section-stripe {
+    position: absolute;
+    top:0; bottom:0; right:0;
+    width: 5px;
+    background: repeating-linear-gradient(
+      -45deg,
+      var(--red) 0, var(--red) 2px,
+      transparent 2px, transparent 8px
+    );
+    opacity: 0.15;
+  }
+
+  /* KEYFRAMES */
+  @keyframes fadeUp {
+    from { opacity:0; transform: translateY(30px); }
+    to { opacity:1; transform: translateY(0); }
+  }
+  @keyframes pulse-ring {
+    0% { transform: scale(1); opacity:0.5; }
+    100% { transform: scale(1.5); opacity:0; }
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--black); }
+  ::-webkit-scrollbar-thumb { background: var(--red); }
+  
+  /* MARQUEE TICKER */
+  .marquee-wrap {
+    background: var(--red);
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 12px 0;
+    border-top: 1px solid rgba(0,0,0,0.2);
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+  }
+  .marquee-track {
+    display: inline-flex;
+    animation: marquee 30s linear infinite;
+  }
+  .marquee-item {
+    padding: 0 40px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .marquee-item::after {
+    content: '✦';
+    color: rgba(255,255,255,0.4);
+    font-size: 10px;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* HERO right visual */
+  .hero-right-visual {
+    position: relative;
+    z-index: 2;
+    grid-column: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 140px 64px 80px 40px;
+  }
+  .hero-visual-card {
+    background: var(--dark2);
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+  }
+  .hero-visual-card::before {
+    content: '';
+    position: absolute;
+    top: -2px; left: -2px; right: -2px; bottom: -2px;
+    border: 2px solid var(--red);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .hero-visual-card:hover::before { opacity: 0.4; }
+  .hvc-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--red);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hvc-label::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--red);
+    border-radius: 50%;
+    animation: pulse-dot 1.5s ease-in-out infinite;
+  }
+  @keyframes pulse-dot {
+    0%,100% { transform: scale(1); opacity:1; }
+    50% { transform: scale(1.5); opacity:0.5; }
+  }
+  .hvc-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 48px;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .hvc-title .red { color: var(--red); }
+  .hvc-sub { font-size: 14px; color: var(--muted); margin-bottom: 32px; line-height: 1.6; }
+  .hvc-bars { display: flex; flex-direction: column; gap: 12px; }
+  .hvc-bar-row { display: flex; flex-direction: column; gap: 6px; }
+  .hvc-bar-info { display: flex; justify-content: space-between; font-size: 12px; color: var(--light); }
+  .hvc-bar-info span:last-child { color: var(--red); font-weight: 600; }
+  .hvc-bar-bg { height: 3px; background: rgba(255,255,255,0.08); overflow: hidden; }
+  .hvc-bar-fill {
+    height: 100%;
+    background: var(--red);
+    transform-origin: left;
+    animation: bar-grow 1.5s ease forwards;
+    animation-play-state: paused;
+  }
+  .hvc-bar-fill.animated { animation-play-state: running; }
+  @keyframes bar-grow {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+  .hvc-bar-fill-1 { width: 85%; animation-delay: 0.8s; }
+  .hvc-bar-fill-2 { width: 92%; animation-delay: 1.0s; }
+  .hvc-bar-fill-3 { width: 78%; animation-delay: 1.2s; }
+  .hvc-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.06);
+    margin: 28px 0;
+  }
+  .hvc-bottom {
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* Responsive - simple breakpoint */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    nav.scrolled { padding: 12px 24px; }
+    .nav-links, .nav-cta { display: none; }
+    #hero { grid-template-columns: 1fr; }
+    .hero-right-visual { display: none; }
+    .hero-content { padding: 120px 24px 120px; }
+    .hero-stats { position: static; display: grid; grid-template-columns: 1fr 1fr; }
+    .stat-item { border-right: none; border: 1px solid rgba(255,255,255,0.06); }
+    #about, #problems, #solutions, #hub, #contact { padding: 80px 24px; }
+    .about-grid, .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+    .about-right { padding-top: 0; }
+    .prob-panel.active { grid-template-columns: 1fr; }
+    .solutions-grid { grid-template-columns: 1fr; }
+    .hub-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 16px; padding: 24px; text-align: center; }
+    .footer-links { justify-content: center; }
+    .eco-triangle-wrap { min-height: 600px; }
+    .problems-header { flex-direction: column; align-items: flex-start; }
+    .problems-header-right { text-align: left; }
+    .eco-header { flex-direction: column; gap: 24px; }
+    .eco-sub { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">●<span>TingTing</span> Networks</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#problems">Solutions</a></li>
+    <li><a href="#ecosystem">Ecosystem</a></li>
+    <li><a href="#hub">Creator Hub</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get Started</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="slash slash-1"></div>
+  <div class="slash slash-2"></div>
+  <div class="slash slash-3"></div>
+  <div class="hero-watermark">4</div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span>Vietnam's #1 Social Commerce Partner</span>
+    </div>
+    <h1 class="hero-title">
+      <span class="red">Ting</span><span class="outline">Ting</span><br>
+      Net<span class="red">works</span>
+    </h1>
+    <p class="hero-sub">
+      <strong>Content · Creator · Commerce</strong><br>
+      Where connection brings impact. Vietnam's pioneer in social commerce — powering brands, creators & communities at scale.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Get Started</a>
+      <a href="#about" class="btn-ghost">
+        Discover More
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8H13M8 3L13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-right-visual">
+    <div class="hero-visual-card">
+      <div class="hvc-label">Live Performance</div>
+      <div class="hvc-title">SEA<br><span class="red">Record</span></div>
+      <div class="hvc-sub">Largest Mega LIVE in Vietnam 2023.<br>Hat-trick records across Southeast Asia.</div>
+      <div class="hvc-bars">
+        <div class="hvc-bar-row">
+          <div class="hvc-bar-info"><span>Brand Impact</span><span>85%</span></div>
+          <div class="hvc-bar-bg"><div class="hvc-bar-fill hvc-bar-fill-1 animated"></div></div>
+        </div>
+        <div class="hvc-bar-row">
+          <div class="hvc-bar-info"><span>Creator ROI</span><span>92%</span></div>
+          <div class="hvc-bar-bg"><div class="hvc-bar-fill hvc-bar-fill-2 animated"></div></div>
+        </div>
+        <div class="hvc-bar-row">
+          <div class="hvc-bar-info"><span>GMV Growth</span><span>78%</span></div>
+          <div class="hvc-bar-bg"><div class="hvc-bar-fill hvc-bar-fill-3 animated"></div></div>
+        </div>
+      </div>
+      <div class="hvc-divider"></div>
+      <div class="hvc-bottom">100+ Brands · 1000+ Creators · Full SEA Coverage</div>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">100+</div>
+      <div class="stat-label">Brand Partners</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4+</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">#1</div>
+      <div class="stat-label">Mega LIVE Vietnam</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">SEA</div>
+      <div class="stat-label">Largest LIVE Records</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Content Creation</span>
+    <span class="marquee-item">Creator Partnership MCN</span>
+    <span class="marquee-item">LIVE Operation</span>
+    <span class="marquee-item">Social Affiliate</span>
+    <span class="marquee-item">Community</span>
+    <span class="marquee-item">Seller Enablement</span>
+    <span class="marquee-item">Social Commerce</span>
+    <span class="marquee-item">E-Commerce</span>
+    <span class="marquee-item">Content Creation</span>
+    <span class="marquee-item">Creator Partnership MCN</span>
+    <span class="marquee-item">LIVE Operation</span>
+    <span class="marquee-item">Social Affiliate</span>
+    <span class="marquee-item">Community</span>
+    <span class="marquee-item">Seller Enablement</span>
+    <span class="marquee-item">Social Commerce</span>
+    <span class="marquee-item">E-Commerce</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-stripe"></div>
+  <div class="about-grid">
+    <div class="about-left reveal">
+      <div class="section-tag">
+        <div class="section-tag-num">01</div>
+        <span>About Us</span>
+      </div>
+      <h2 class="section-title">One of <span class="accent">Vietnam's</span><br>First Players</h2>
+      <p class="about-desc">
+        Pioneer of social commerce in Vietnam since day one. We run the country's largest Mega LIVE in 2023 and hold hat-trick records for the biggest LIVEs in Southeast Asia.
+      </p>
+      <div class="expertise-list">
+        <div class="exp-item">
+          <div class="exp-num">4+</div>
+          <div class="exp-text">
+            <strong>Years of Experience</strong>
+            Key Account Managers in E-com & Social Commerce platforms and FMCG brands
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-num">SEA</div>
+          <div class="exp-text">
+            <strong>Largest LIVE Records</strong>
+            Hat-trick records for biggest LIVEs in Southeast Asia — unmatched execution
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-num">FinTech</div>
+          <div class="exp-text">
+            <strong>Community Expertise</strong>
+            Deep knowledge cultivating & monitoring community networks for Fintech companies
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-num">Multi</div>
+          <div class="exp-text">
+            <strong>Diverse Partnerships</strong>
+            FMCG, Entertainment, Media agencies & E-commerce platform teams worldwide
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-right reveal reveal-delay-2">
+      <div class="about-card-big">
+        <div class="big-card-label">Our Pillars</div>
+        <div class="big-card-title">Full-Stack<br>Shoppertainment</div>
+        <div class="big-card-text">
+          We are a one-stop shoppertainment solution provider, bridging brands, creators, and commerce into a single, high-impact ecosystem built for the modern social era.
+        </div>
+        <div class="big-card-separator"></div>
+        <div class="big-card-tags">
+          <div class="tag">Livestreaming</div>
+          <div class="tag">MCN</div>
+          <div class="tag">Social Affiliate</div>
+          <div class="tag">Content Strategy</div>
+          <div class="tag">E-Commerce</div>
+          <div class="tag">Community</div>
+          <div class="tag">Seller Enablement</div>
+          <div class="tag">FOMO Content</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMS / SOLUTIONS -->
+<section id="problems">
+  <div class="problems-inner">
+    <div class="problems-header reveal">
+      <div>
+        <div class="section-tag">
+          <div class="section-tag-num">02</div>
+          <span>Pain Points We Solve</span>
+        </div>
+        <h2 class="section-title">We <span class="accent">Understand</span><br>& We Solve</h2>
+      </div>
+      <div class="problems-header-right">
+        Every challenge faced by brands and creators — we've seen it, solved it, and built systems around it.
+      </div>
+    </div>
+
+    <div class="problems-tabs reveal">
+      <button class="prob-tab active" onclick="switchTab(this,'brands')">For Brands</button>
+      <button class="prob-tab" onclick="switchTab(this,'creators')">For Creators</button>
+    </div>
+
+    <div id="brands" class="prob-panel active">
+      <div class="prob-card reveal">
+        <div class="prob-card-num">01</div>
+        <div class="prob-icon">📈</div>
+        <div class="prob-title">Omni-Channel Growth</div>
+        <div class="prob-desc">No clear strategy spanning social, e-com, and content? We architect the full-funnel omni-channel growth playbook.</div>
+      </div>
+      <div class="prob-card reveal reveal-delay-1">
+        <div class="prob-card-num">02</div>
+        <div class="prob-icon">⚡</div>
+        <div class="prob-title">Keep Up with Trends</div>
+        <div class="prob-desc">Struggling to stay relevant in fast-moving social commerce? Our team tracks and executes real-time trend strategies.</div>
+      </div>
+      <div class="prob-card reveal reveal-delay-2">
+        <div class="prob-card-num">03</div>
+        <div class="prob-icon">💰</div>
+        <div class="prob-title">Proving S-Com ROI</div>
+        <div class="prob-desc">Hard to quantify social commerce returns? We provide transparent GMV tracking with healthy ROI via Video AFF models.</div>
+      </div>
+      <div class="prob-card reveal reveal-delay-1">
+        <div class="prob-card-num">04</div>
+        <div class="prob-icon">🎯</div>
+        <div class="prob-title">Dropping Engagement</div>
+        <div class="prob-desc">Declining reach and interaction? Our creator network and content direction systems rebuild and sustain engagement.</div>
+      </div>
+      <div class="prob-card reveal reveal-delay-2">
+        <div class="prob-card-num">05</div>
+        <div class="prob-icon">🏆</div>
+        <div class="prob-title">Stand Out from Competition</div>
+        <div class="prob-desc">Market noise drowning your brand? We craft distinctive content positioning that cuts through the clutter.</div>
+      </div>
+      <div class="prob-card reveal reveal-delay-3">
+        <div class="prob-card-num">06</div>
+        <div class="prob-icon">🔥</div>
+        <div class="prob-title">Creative Burnout</div>
+        <div class="prob-desc">Content pipeline running dry? Our creative hub and community networks ensure a consistent stream of fresh content.</div>
+      </div>
+    </div>
+
+    <div id="creators" class="prob-panel">
+      <div class="prob-card reveal">
+        <div class="prob-card-num">01</div>
+        <div class="prob-icon">🗺️</div>
+        <div class="prob-title">No Career Roadmap</div>
+        <div class="prob-desc">Lost without a clear creator career direction? We provide structured growth paths from long-tail to top-tier.</div>
+      </div>
+      <div class="prob-card reveal reveal-delay-1">
+        <div class="prob-card-num">02</div>
+        <div class="prob-icon">🏗️</div>
+        <div class="prob-title">No Creative Hub</div>
+        <div class="prob-desc">No space to create quality content? Our physical Creator Hub offers LIVE studios, product rooms, and co-working zones.</div>
+      </div>
+      <div class="prob-card reveal reveal-delay-2">
+        <div class="prob-card-num">03</div>
+        <div class="prob-icon">💼</div>
+        <div class="prob-title">Limited Monetization</div>
+        <div class="prob-desc">Can't convert audience to income? We unlock Booking, Platform, Affiliate, and Business revenue channels simultaneously.</div>
+      </div>
+      <div class="prob-card reveal reveal-delay-1">
+        <div class="prob-card-num">04</div>
+        <div class="prob-icon">✨</div>
+        <div class="prob-title">No Personal Branding</div>
+        <div class="prob-desc">Unclear personal brand identity? We co-create personal branding strategies that make creators memorable and bankable.</div>
+      </div>
+      <div class="prob-card reveal reveal-delay-2">
+        <div class="prob-card-num">05</div>
+        <div class="prob-icon">🧾</div>
+        <div class="prob-title">Tax & Payment Issues</div>
+        <div class="prob-desc">Unclear terms around payments and taxes? We provide full financial framework guidance for creator income.</div>
+      </div>
+      <div class="prob-card reveal reveal-delay-3">
+        <div class="prob-card-num">06</div>
+        <div class="prob-icon">📦</div>
+        <div class="prob-title">Lack of Products</div>
+        <div class="prob-desc">No consistent supply of products to promote? Our Product Hub gives always-on access to 100+ brand inventories.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTIONS SECTION -->
+<section id="solutions">
+  <div class="solutions-inner">
+    <div class="solutions-intro reveal">
+      <div class="section-tag" style="justify-content:center;">
+        <div class="section-tag-num">03</div>
+        <span>Our Services</span>
+      </div>
+      <h2 class="section-title">Full <span class="accent">Package</span><br>Solutions</h2>
+      <p style="margin-top:16px;">Whatever your pain points — we offer a complete solution stack.</p>
+    </div>
+
+    <div class="solutions-grid">
+      <div class="sol-card reveal">
+        <span class="sol-card-icon">📡</span>
+        <div class="sol-card-title">Creator Partnership<br><span style="color:var(--red)">MCN</span></div>
+        <div class="sol-card-desc">Full-service Multi-Channel Network managing creator growth, income, and brand collaborations across all tiers.</div>
+        <div class="sol-features">
+          <div class="sol-feat">Creator Education (Top, Mid, Long-tail)</div>
+          <div class="sol-feat">Creator Income Optimization</div>
+          <div class="sol-feat">Booking, Platform, Affiliate, Business</div>
+        </div>
+      </div>
+
+      <div class="sol-card reveal reveal-delay-1">
+        <span class="sol-card-icon">🔴</span>
+        <div class="sol-card-title">LIVE<br><span style="color:var(--red)">Operation</span></div>
+        <div class="sol-card-desc">End-to-end LIVE commerce management from strategy to execution — BAU sessions and Mega LIVE events.</div>
+        <div class="sol-features">
+          <div class="sol-feat">BAU & Mega LIVE Management</div>
+          <div class="sol-feat">Scene, Lighting & Equipment Setup</div>
+          <div class="sol-feat">SEA-Record Breaking Performance</div>
+        </div>
+      </div>
+
+      <div class="sol-card reveal reveal-delay-2">
+        <span class="sol-card-icon">🔗</span>
+        <div class="sol-card-title">Social<br><span style="color:var(--red)">Affiliate</span></div>
+        <div class="sol-card-desc">Sustainable GMV growth through Video AFF strategies — moving beyond FOMO-induced peaks to consistent revenue.</div>
+        <div class="sol-features">
+          <div class="sol-feat">Video Affiliate Programs</div>
+          <div class="sol-feat">Sustainable GMV Building</div>
+          <div class="sol-feat">Community-Driven Sales</div>
+        </div>
+      </div>
+
+      <div class="sol-card reveal">
+        <span class="sol-card-icon">✍️</span>
+        <div class="sol-card-title">Content<br><span style="color:var(--red)">Creation</span></div>
+        <div class="sol-card-desc">Strategic content architecture: Key messages, FOMO content, sub-content, and SEO-optimized assets at scale.</div>
+        <div class="sol-features">
+          <div class="sol-feat">Key Message & Positioning</div>
+          <div class="sol-feat">FOMO & Sub-Content</div>
+          <div class="sol-feat">SEO Content Strategy</div>
+        </div>
+      </div>
+
+      <div class="sol-card reveal reveal-delay-1">
+        <span class="sol-card-icon">🛒</span>
+        <div class="sol-card-title">Seller<br><span style="color:var(--red)">Enablement</span></div>
+        <div class="sol-card-desc">Centralized and decentralized e-commerce management across TikTok, Shopee, Lazada, Shopify and beyond.</div>
+        <div class="sol-features">
+          <div class="sol-feat">TTS, Shopee, Lazada Centralized</div>
+          <div class="sol-feat">Shopify & Workforce Decentralized</div>
+          <div class="sol-feat">Zalo OA & Telesales</div>
+        </div>
+      </div>
+
+      <div class="sol-card reveal reveal-delay-2">
+        <span class="sol-card-icon">👥</span>
+        <div class="sol-card-title">Community<br><span style="color:var(--red)">& Outreach</span></div>
+        <div class="sol-card-desc">Social outreach programs leveraging community networks, seeding strategies, and paid amplification.</div>
+        <div class="sol-features">
+          <div class="sol-feat">Community Building & Seeding</div>
+          <div class="sol-feat">Social Ads Management</div>
+          <div class="sol-feat">Fintech Community Expertise</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ECOSYSTEM -->
+<section id="ecosystem">
+  <div class="eco-bg-shape"></div>
+  <div class="eco-bg-shape2"></div>
+  <div class="eco-inner">
+    <div class="eco-header reveal">
+      <div class="eco-header-left">
+        <div class="section-tag">
+          <div class="section-tag-num" style="border-color:rgba(0,0,0,0.3);color:rgba(0,0,0,0.7);">04</div>
+          <span style="color:rgba(0,0,0,0.7);">Our Ecosystem</span>
+        </div>
+        <h2 class="section-title" style="color:black;">Making the <span style="color:rgba(0,0,0,0.35);-webkit-text-stroke:2px black;">Most</span><br>of Our Ecosystem</h2>
+      </div>
+      <p class="eco-sub">A powerful three-way synergy between Brands, TingTing Networks, and Creators — each amplifying the other.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;" class="reveal">
+      <div style="background:rgba(0,0,0,0.15);padding:40px 36px;border:1px solid rgba(0,0,0,0.1);">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;text-transform:uppercase;color:black;margin-bottom:20px;">Brands / Sellers</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+          <li style="font-size:14px;color:rgba(0,0,0,0.75);display:flex;align-items:center;gap:10px;"><span style="color:black;font-weight:700;">→</span> Source of products at scale</li>
+          <li style="font-size:14px;color:rgba(0,0,0,0.75);display:flex;align-items:center;gap:10px;"><span style="color:black;font-weight:700;">→</span> Huge stream of content</li>
+          <li style="font-size:14px;color:rgba(0,0,0,0.75);display:flex;align-items:center;gap:10px;"><span style="color:black;font-weight:700;">→</span> Cost-efficient delivery ops</li>
+          <li style="font-size:14px;color:rgba(0,0,0,0.75);display:flex;align-items:center;gap:10px;"><span style="color:black;font-weight:700;">→</span> 100+ brands from HB, Fashion, ELHA, FMCG</li>
+        </ul>
+      </div>
+      <div style="background:rgba(0,0,0,0.25);padding:40px 36px;border:1px solid rgba(0,0,0,0.15);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
+        <div style="width:80px;height:80px;border:3px solid black;border-radius:50%;display:grid;place-items:center;margin-bottom:24px;">
+          <span style="font-size:28px;">●</span>
+        </div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:32px;text-transform:uppercase;color:black;line-height:1;margin-bottom:12px;">TingTing<br>Networks</div>
+        <div style="font-size:13px;color:rgba(0,0,0,0.65);line-height:1.6;">The hub that connects, manages, and amplifies both sides of the equation</div>
+      </div>
+      <div style="background:rgba(0,0,0,0.15);padding:40px 36px;border:1px solid rgba(0,0,0,0.1);">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;text-transform:uppercase;color:black;margin-bottom:20px;">Creators</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+          <li style="font-size:14px;color:rgba(0,0,0,0.75);display:flex;align-items:center;gap:10px;"><span style="color:black;font-weight:700;">→</span> Content consistency guaranteed</li>
+          <li style="font-size:14px;color:rgba(0,0,0,0.75);display:flex;align-items:center;gap:10px;"><span style="color:black;font-weight:700;">→</span> Sustainable ROI & income</li>
+          <li style="font-size:14px;color:rgba(0,0,0,0.75);display:flex;align-items:center;gap:10px;"><span style="color:black;font-weight:700;">→</span> Access to Creator Hub</li>
+          <li style="font-size:14px;color:rgba(0,0,0,0.75);display:flex;align-items:center;gap:10px;"><span style="color:black;font-weight:700;">→</span> Always-on product supply</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREATOR HUB -->
+<section id="hub">
+  <div class="hub-inner">
+    <div class="hub-header reveal">
+      <div class="section-tag">
+        <div class="section-tag-num">05</div>
+        <span>Physical Space</span>
+      </div>
+      <h2 class="section-title">Creator <span class="accent">Hub</span></h2>
+    </div>
+    <div class="hub-grid">
+      <div class="hub-card reveal">
+        <div class="hub-card-accent"></div>
+        <span class="hub-card-emoji">📦</span>
+        <div class="hub-card-title">Product <span>Hub</span></div>
+        <div class="hub-card-desc">Brands send product samples to be displayed and reviewed. Creators pick up products, try them, and create authentic videos or go LIVE — powered by a constantly refreshed inventory from 100+ brand partners.</div>
+        <div class="hub-card-bar"><div class="hub-card-bar-fill"></div></div>
+      </div>
+      <div class="hub-card reveal reveal-delay-1">
+        <div class="hub-card-accent"></div>
+        <span class="hub-card-emoji">🎥</span>
+        <div class="hub-card-title">LIVE Studio <span>Setup</span></div>
+        <div class="hub-card-desc">Professional scene design, studio-grade lighting, and full equipment setup engineered for high-performance LIVE commerce sessions. Built for content that converts — from casual BAU streams to record-breaking Mega LIVEs.</div>
+        <div class="hub-card-bar"><div class="hub-card-bar-fill"></div></div>
+      </div>
+      <div class="hub-card reveal">
+        <div class="hub-card-accent"></div>
+        <span class="hub-card-emoji">🏫</span>
+        <div class="hub-card-title">Meeting <span>Rooms</span></div>
+        <div class="hub-card-desc">Dedicated training and meeting rooms where TingTing Networks educates creators on content strategy, platform mechanics, and business fundamentals. Brand workshops and briefings also hosted here.</div>
+        <div class="hub-card-bar"><div class="hub-card-bar-fill"></div></div>
+      </div>
+      <div class="hub-card reveal reveal-delay-1">
+        <div class="hub-card-accent"></div>
+        <span class="hub-card-emoji">☕</span>
+        <div class="hub-card-title">Co-Working <span>Space</span></div>
+        <div class="hub-card-desc">A creative-first co-working environment with great coffee, fast internet, and a community vibe that fuels inspiration. Designed for deep work, spontaneous collaborations, and the kind of energy that makes great content happen.</div>
+        <div class="hub-card-bar"><div class="hub-card-bar-fill"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-left reveal">
+      <div class="section-tag">
+        <div class="section-tag-num">06</div>
+        <span>Get in Touch</span>
+      </div>
+      <h2 class="contact-headline">
+        Let's <span class="red">Build</span><br>
+        <span class="outline">Together</span>
+      </h2>
+      <div class="contact-info">
+        <a href="tel:+84901807346" class="contact-row">
+          <div class="contact-row-icon">📞</div>
+          <div>
+            <div class="contact-row-label">Phone</div>
+            <div class="contact-row-val">(+84) 901 807 346</div>
+          </div>
+        </a>
+        <a href="mailto:partnership@tingting.asia" class="contact-row">
+          <div class="contact-row-icon">✉️</div>
+          <div>
+            <div class="contact-row-label">E-Mail</div>
+            <div class="contact-row-val">partnership@tingting.asia</div>
+          </div>
+        </a>
+        <a href="https://www.tingting.asia" target="_blank" class="contact-row">
+          <div class="contact-row-icon">🌐</div>
+          <div>
+            <div class="contact-row-label">Website</div>
+            <div class="contact-row-val">www.tingting.asia</div>
+          </div>
+        </a>
+        <div class="contact-row" style="cursor:default;">
+          <div class="contact-row-icon">📍</div>
+          <div>
+            <div class="contact-row-label">Address</div>
+            <div class="contact-row-val">25A Tu Xuong, Dist 3, HCMC</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-right reveal reveal-delay-2">
+      <div class="contact-form">
+        <div class="form-title">Send Us a Message</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Nguyen Van A">
+          </div>
+          <div class="form-group">
+            <label>Company</label>
+            <input type="text" placeholder="Brand / Agency">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="hello@yourbrand.com">
+        </div>
+        <div class="form-group">
+          <label>I am a...</label>
+          <select>
+            <option value="">Select your role</option>
+            <option>Brand / Seller</option>
+            <option>Content Creator</option>
+            <option>Agency / Media</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea rows="4" placeholder="Tell us about your goals and challenges..."></textarea>
+        </div>
+        <button class="btn-submit" onclick="handleSubmit(this)">Send Message →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">●<span>TingTing</span> Networks</div>
+  <div class="footer-copy">© 2026 TingTing Networks. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+    <a href="https://www.tingting.asia" target="_blank">Website</a>
+    <a href="mailto:partnership@tingting.asia">Contact</a>
+  </div>
+</footer>
+
+<script>
+  // CURSOR
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{
+    mx=e.clientX; my=e.clientY;
+    cursor.style.left=(mx-6)+'px';
+    cursor.style.top=(my-6)+'px';
+  });
+  function animRing(){
+    rx+=(mx-rx)*0.18;
+    ry+=(my-ry)*0.18;
+    ring.style.left=(rx-20)+'px';
+    ring.style.top=(ry-20)+'px';
+    requestAnimationFrame(animRing);
+  }
+  animRing();
+  document.querySelectorAll('a,button,.prob-tab,.hub-card,.sol-card,.exp-item').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{ cursor.classList.add('hover'); ring.classList.add('hover'); });
+    el.addEventListener('mouseleave',()=>{ cursor.classList.remove('hover'); ring.classList.remove('hover'); });
+  });
+
+  // NAV SCROLL
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll',()=>{
+    nav.classList.toggle('scrolled', window.scrollY > 80);
+  });
+
+  // SCROLL REVEAL
+  const revealEls = document.querySelectorAll('.reveal');
+  const revObs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('visible'); }
+    });
+  },{ threshold:0.12 });
+  revealEls.forEach(el=> revObs.observe(el));
+
+  // TAB SWITCH
+  function switchTab(btn, tab){
+    document.querySelectorAll('.prob-tab').forEach(t=> t.classList.remove('active'));
+    document.querySelectorAll('.prob-panel').forEach(p=> p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(tab).classList.add('active');
+    // re-trigger reveals
+    document.querySelectorAll('#'+tab+' .reveal').forEach(el=>{
+      el.classList.remove('visible');
+      setTimeout(()=> el.classList.add('visible'), 50);
+    });
+  }
+
+  // FORM SUBMIT
+  function handleSubmit(btn){
+    btn.textContent = '✓ Message Sent!';
+    btn.style.background = '#2a9d2a';
+    setTimeout(()=>{
+      btn.textContent = 'Send Message →';
+      btn.style.background = '';
+    }, 3000);
+  }
+
+  // COUNTER ANIMATION for stats
+  function animateCount(el, target, suffix=''){
+    let start=0;
+    const step = target/60;
+    const timer = setInterval(()=>{
+      start += step;
+      if(start >= target){ start = target; clearInterval(timer); }
+      el.textContent = Math.floor(start) + suffix;
+    }, 16);
+  }
+  // Trigger when hero stats visible
+  const statsObs = new IntersectionObserver(entries=>{
+    if(entries[0].isIntersecting){
+      const nums = document.querySelectorAll('.stat-num');
+      animateCount(nums[0], 100, '+');
+      statsObs.disconnect();
+    }
+  },{ threshold:0.5 });
+  const heroStats = document.querySelector('.hero-stats');
+  if(heroStats) statsObs.observe(heroStats);
+
+  // Smooth active nav highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll',()=>{
+    let current='';
+    sections.forEach(s=>{
+      if(window.scrollY >= s.offsetTop - 200) current = s.id;
+    });
+    navLinks.forEach(a=>{
+      a.style.color = a.getAttribute('href') === '#'+current ? 'var(--red)' : '';
+    });
+  });
+</script>
+</body>
+</html>
