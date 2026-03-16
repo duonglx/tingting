@@ -11,6 +11,7 @@
   <meta name="author" content="TingTing Networks">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://duonglx.github.io/tingting/index_v6.html">
+  <meta name="theme-color" content="#050505">
 
   <!-- Geo -->
   <meta name="geo.region" content="VN-SG">
@@ -98,7 +99,7 @@
   </script>
 
   <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="https://unpkg.com/lucide@0.303.0/dist/umd/lucide.min.js"></script>
 
   <style>
     /* ── CSS Custom Properties ── */
@@ -466,6 +467,37 @@
       background: linear-gradient(90deg, transparent 0%, var(--border) 50%, transparent 100%);
     }
 
+    /* ── Contact card hover ── */
+    .contact-card {
+      transition: border-color 0.2s ease;
+    }
+    .contact-card:hover {
+      border-color: rgba(132,204,22,0.3) !important;
+    }
+
+    /* ── Hero Image ── */
+    .hero-image-wrap {
+      position: relative;
+      max-width: 720px;
+      margin: 0 auto;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 24px 64px rgba(0,0,0,0.4), 0 0 0 1px rgba(132,204,22,0.08);
+    }
+    .hero-image-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .hero-image-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 60%, var(--bg-black) 100%);
+      pointer-events: none;
+    }
+
     /* ── Safe Area ── */
     .pb-safe { padding-bottom: calc(60px + env(safe-area-inset-bottom)); }
 
@@ -552,7 +584,7 @@
       <a href="#creator-hub" class="mobile-nav-link text-base text-txt-secondary hover:text-txt-primary font-medium py-3 px-4 rounded-xl transition-colors cursor-pointer" style="min-height:44px;">Creator Hub</a>
       <a href="#contact" class="mobile-nav-link text-base text-txt-secondary hover:text-txt-primary font-medium py-3 px-4 rounded-xl transition-colors cursor-pointer" style="min-height:44px;">Contact</a>
       <div class="mt-4">
-        <a href="#contact" class="btn-primary w-full justify-center text-center">Partner With Us</a>
+        <a href="#contact" class="mobile-nav-link btn-primary w-full justify-center text-center">Partner With Us</a>
       </div>
     </nav>
   </div>
@@ -596,6 +628,13 @@
           Learn More
           <i data-lucide="chevron-down" class="w-4 h-4"></i>
         </a>
+      </div>
+
+      <!-- Hero Image -->
+      <div class="fade-up stagger-5 mt-14 max-w-3xl mx-auto">
+        <div class="hero-image-wrap">
+          <img src="hero-v6.png" alt="TingTing Networks LIVE commerce studio with creator streaming to multiple platforms" width="1024" height="1024" loading="eager">
+        </div>
       </div>
     </div>
 
@@ -691,9 +730,11 @@
               TingTing Networks connects brands with Vietnam's top content creators through an integrated ecosystem of MCN partnerships, LIVE commerce operations, social affiliate communities, and seller enablement services. We power the full value chain of social commerce.
             </p>
           </div>
-          <div class="mt-8 flex items-center gap-2">
-            <span class="text-accent font-heading font-semibold text-sm">Learn about our services</span>
-            <i data-lucide="arrow-down-right" class="w-4 h-4 text-accent"></i>
+          <div class="mt-8">
+            <a href="#services" class="inline-flex items-center gap-2 text-accent font-heading font-semibold text-sm hover:underline cursor-pointer transition-all">
+              Learn about our services
+              <i data-lucide="arrow-down-right" class="w-4 h-4 text-accent"></i>
+            </a>
           </div>
         </div>
 
@@ -804,21 +845,21 @@
             <h4 class="font-heading font-semibold text-txt-primary mb-1.5">Creative burnout</h4>
             <p class="text-txt-secondary text-sm leading-relaxed">Content fatigue hits hard when your team runs 50+ campaigns a quarter.</p>
           </div>
-          <div class="fade-up problem-card">
+          <div class="fade-up stagger-7 problem-card">
             <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background: var(--accent-glow);">
               <i data-lucide="bar-chart-3" class="w-5 h-5 text-accent"></i>
             </div>
             <h4 class="font-heading font-semibold text-txt-primary mb-1.5">Proving ROI</h4>
             <p class="text-txt-secondary text-sm leading-relaxed">Attribution in social commerce is murky. You need clear performance metrics.</p>
           </div>
-          <div class="fade-up problem-card">
+          <div class="fade-up stagger-8 problem-card">
             <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background: var(--accent-glow);">
               <i data-lucide="coins" class="w-5 h-5 text-accent"></i>
             </div>
             <h4 class="font-heading font-semibold text-txt-primary mb-1.5">Monetizing creator talent</h4>
             <p class="text-txt-secondary text-sm leading-relaxed">Finding and managing the right creators at scale is a full-time operation.</p>
           </div>
-          <div class="fade-up problem-card">
+          <div class="fade-up stagger-9 problem-card">
             <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background: var(--accent-glow);">
               <i data-lucide="shield-alert" class="w-5 h-5 text-accent"></i>
             </div>
@@ -1163,7 +1204,7 @@
 
           <div class="space-y-4 mb-10">
             <!-- Zalo -->
-            <a href="https://zalo.me/0901807346" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-4 rounded-xl border transition-colors cursor-pointer" style="background: var(--bg-card); border-color: var(--border);" onmouseover="this.style.borderColor='rgba(132,204,22,0.3)'" onmouseout="this.style.borderColor='var(--border)'">
+            <a href="https://zalo.me/0901807346" target="_blank" rel="noopener noreferrer" class="contact-card flex items-center gap-4 p-4 rounded-xl border cursor-pointer" style="background: var(--bg-card); border-color: var(--border);">
               <div class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background: var(--accent-glow);">
                 <i data-lucide="message-circle" class="w-5 h-5 text-accent"></i>
               </div>
@@ -1174,7 +1215,7 @@
             </a>
 
             <!-- Email -->
-            <a href="mailto:partnership@tingting.asia" class="flex items-center gap-4 p-4 rounded-xl border transition-colors cursor-pointer" style="background: var(--bg-card); border-color: var(--border);" onmouseover="this.style.borderColor='rgba(132,204,22,0.3)'" onmouseout="this.style.borderColor='var(--border)'">
+            <a href="mailto:partnership@tingting.asia" class="contact-card flex items-center gap-4 p-4 rounded-xl border cursor-pointer" style="background: var(--bg-card); border-color: var(--border);">
               <div class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background: var(--accent-glow);">
                 <i data-lucide="mail" class="w-5 h-5 text-accent"></i>
               </div>
@@ -1185,7 +1226,7 @@
             </a>
 
             <!-- Phone -->
-            <a href="tel:+84901807346" class="flex items-center gap-4 p-4 rounded-xl border transition-colors cursor-pointer" style="background: var(--bg-card); border-color: var(--border);" onmouseover="this.style.borderColor='rgba(132,204,22,0.3)'" onmouseout="this.style.borderColor='var(--border)'">
+            <a href="tel:+84901807346" class="contact-card flex items-center gap-4 p-4 rounded-xl border cursor-pointer" style="background: var(--bg-card); border-color: var(--border);">
               <div class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background: var(--accent-glow);">
                 <i data-lucide="phone" class="w-5 h-5 text-accent"></i>
               </div>
@@ -1205,7 +1246,7 @@
 
         <!-- Right: Contact Form -->
         <div class="fade-up stagger-2">
-          <form id="contact-form" class="space-y-5" novalidate>
+          <form id="contact-form" action="https://formspree.io/f/xpwzgqkl" method="POST" class="space-y-5">
             <div>
               <label for="name" class="block text-txt-secondary text-sm font-medium mb-2">Full Name</label>
               <input type="text" id="name" name="name" placeholder="Your name" class="form-input" required autocomplete="name">
@@ -1226,7 +1267,7 @@
               Send Message
               <i data-lucide="send" class="w-4 h-4"></i>
             </button>
-            <div id="form-success" class="hidden text-center py-4">
+            <div id="form-success" class="hidden text-center py-4" aria-live="polite">
               <div class="flex items-center justify-center gap-2 text-accent font-heading font-semibold">
                 <i data-lucide="check-circle" class="w-5 h-5"></i>
                 <span>Message sent! We'll get back to you soon.</span>
@@ -1477,32 +1518,42 @@
         if (contactSection) stickyObserver.observe(contactSection);
       }
 
-      // ── Contact Form Handler (mock) ──
+      // ── Contact Form Handler (Formspree) ──
       const form = document.getElementById('contact-form');
       const formSuccess = document.getElementById('form-success');
       if (form) {
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
           e.preventDefault();
-          // Basic validation
           const name = form.querySelector('#name').value.trim();
           const email = form.querySelector('#email').value.trim();
           const message = form.querySelector('#message').value.trim();
 
           if (!name || !email || !message) return;
 
-          // Simulate submission
           const submitBtn = form.querySelector('button[type="submit"]');
           submitBtn.disabled = true;
           submitBtn.innerHTML = '<span>Sending...</span>';
 
-          setTimeout(() => {
-            form.reset();
+          try {
+            const res = await fetch(form.action, {
+              method: 'POST',
+              body: new FormData(form),
+              headers: { 'Accept': 'application/json' },
+            });
+            if (res.ok) {
+              form.reset();
+              formSuccess.classList.remove('hidden');
+              setTimeout(() => formSuccess.classList.add('hidden'), 5000);
+            } else {
+              alert('Something went wrong. Please try again or email partnership@tingting.asia directly.');
+            }
+          } catch {
+            alert('Network error. Please try again or email partnership@tingting.asia directly.');
+          } finally {
             submitBtn.disabled = false;
             submitBtn.innerHTML = 'Send Message <i data-lucide="send" class="w-4 h-4"></i>';
             if (typeof lucide !== 'undefined') lucide.createIcons();
-            formSuccess.classList.remove('hidden');
-            setTimeout(() => formSuccess.classList.add('hidden'), 4000);
-          }, 1200);
+          }
         });
       }
 
