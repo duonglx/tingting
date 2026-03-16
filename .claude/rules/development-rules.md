@@ -48,35 +48,46 @@
 └── ...
 ```
 
-## GitHub Pages Deploy & Versioning
-When user mentions "upload/push to GitHub Pages" and/or "đánh version":
-1. **Save to versions/** — new/modified file goes to `versions/index_vN.html`
-2. **Sync to tingtingnetworks/** — `cp versions/index_vN.html tingtingnetworks/index.html`
-3. **Commit to `main`** — stage files, commit with conventional message
-4. **Tag version** — `git tag -a vX.Y.Z -m "description"`, increment from latest tag (`git tag --sort=-v:refname | head -1`)
-5. **Push main + tag** — `git push origin main && git push origin vX.Y.Z`
-6. **Deploy to `gh-pages`** — this repo serves Pages from `gh-pages` branch:
-   ```
-   git checkout gh-pages
-   git checkout main -- versions/index_vN.html
-   git add versions/ && git commit -m "feat: deploy vN to preview"
-   git push origin gh-pages
-   git checkout main
-   ```
-7. **Confirm URL** — preview at `https://tingtingnetworks.asia/versions/index_vN.html`
+## Deploy Modes
 
-## Release to Production
-When user says "release vN" or "release version N":
-1. **Copy version to root** on gh-pages — overwrite `index.html` at root:
-   ```
-   git checkout gh-pages
-   cp tingtingnetworks/index.html index.html   # or: git checkout main -- tingtingnetworks/index.html && mv ...
-   git add index.html && git commit -m "release: vN to production"
-   git push origin gh-pages
-   git checkout main
-   ```
-2. **Production URL** — `https://tingtingnetworks.asia` (root index.html, no subdirectory)
-3. **Custom domain**: CNAME = `tingtingnetworks.asia`, DNS A records → GitHub Pages IPs
+### Preview (đánh version / upload GitHub Pages / push preview)
+User says: "đánh version", "upload lên github pages", "push preview", "deploy preview"
+- Purpose: push version lên `gh-pages` để xem trước, **KHÔNG** ghi đè production
+- URL: `https://tingtingnetworks.asia/versions/index_vN.html`
+- Steps:
+  1. Save to `versions/index_vN.html` + sync to `tingtingnetworks/index.html` on `main`
+  2. Commit to `main` with conventional message
+  3. Tag: `git tag -a vX.Y.Z` (increment from `git tag --sort=-v:refname | head -1`)
+  4. Push: `git push origin main && git push origin vX.Y.Z`
+  5. Deploy preview to `gh-pages`:
+     ```
+     git checkout gh-pages
+     git checkout main -- versions/index_vN.html
+     git add versions/ && git commit -m "feat: deploy vN preview"
+     git push origin gh-pages
+     git checkout main
+     ```
+  6. Confirm preview URL
+
+### Release to Production (release / public / go live)
+User says: "release vN", "release version N", "public lên production", "go live"
+- Purpose: ghi đè root `index.html` trên `gh-pages` → live tại custom domain
+- URL: `https://tingtingnetworks.asia`
+- Steps:
+  1. Ensure version exists in `versions/index_vN.html`
+  2. Sync: `cp versions/index_vN.html tingtingnetworks/index.html`
+  3. Commit + push to `main`
+  4. Deploy to `gh-pages` — overwrite root `index.html`:
+     ```
+     git checkout gh-pages
+     git checkout main -- tingtingnetworks/index.html
+     cp tingtingnetworks/index.html index.html
+     git add index.html tingtingnetworks/ && git commit -m "release: vN to production"
+     git push origin gh-pages
+     git checkout main
+     ```
+  5. Confirm: `https://tingtingnetworks.asia` now serves vN
+- **Custom domain**: CNAME = `tingtingnetworks.asia`, DNS A records → GitHub Pages IPs
 
 ## Code Implementation
 - Write clean, readable, and maintainable code
