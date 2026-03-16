@@ -84,8 +84,8 @@
             'accent-dark': '#65A30D',
             'accent-glow': 'rgba(132,204,22,0.15)',
             'txt-primary': '#FFFFFF',
-            'txt-secondary':'#C4C4CC',
-            'txt-muted':   '#9898A2',
+            'txt-secondary':'#E0E0E6',
+            'txt-muted':   '#B8B8C0',
             'border-col':  '#2A2A2E',
             'border-light':'#42424A',
           },
@@ -113,8 +113,8 @@
       --accent-dark: #65A30D;
       --accent-glow: rgba(132,204,22,0.15);
       --text-primary: #FFFFFF;   /* Pure white — max outdoor readability */
-      --text-secondary: #C4C4CC; /* Bumped for sunlight legibility */
-      --text-muted: #9898A2;     /* Bumped for sunlight legibility */
+      --text-secondary: #E0E0E6; /* Bright secondary — high OLED readability */
+      --text-muted: #B8B8C0;     /* Visible muted — clear on dark backgrounds */
       --border: #2A2A2E;
       --border-light: #42424A;
     }
@@ -136,7 +136,7 @@
 
     /* ── Typography Scale ── */
     .h-display {
-      font-size: clamp(4rem, 12vw, 11rem);
+      font-size: clamp(3rem, 12vw, 11rem);
       font-family: 'Sora', sans-serif;
       font-weight: 700;
       line-height: 0.9;
@@ -194,6 +194,7 @@
       filter: blur(120px);
       pointer-events: none;
       will-change: transform;
+      z-index: 2;
     }
     .orb-1 {
       width: 600px;
@@ -475,26 +476,30 @@
       border-color: rgba(132,204,22,0.3) !important;
     }
 
-    /* ── Hero Image ── */
-    .hero-image-wrap {
-      position: relative;
-      max-width: 720px;
-      margin: 0 auto;
-      border-radius: 1.5rem;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      box-shadow: 0 24px 64px rgba(0,0,0,0.4), 0 0 0 1px rgba(132,204,22,0.08);
+    /* ── Hero Background Image ── */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
     }
-    .hero-image-wrap img {
+    .hero-bg img {
       width: 100%;
-      height: auto;
-      display: block;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
     }
-    .hero-image-wrap::after {
+    /* Dark overlay gradient — ensures text readability over image */
+    .hero-bg::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, transparent 60%, var(--bg-black) 100%);
+      background:
+        linear-gradient(180deg,
+          rgba(5,5,5,0.70) 0%,
+          rgba(5,5,5,0.50) 35%,
+          rgba(5,5,5,0.40) 55%,
+          rgba(5,5,5,0.75) 85%,
+          var(--bg-black) 100%);
       pointer-events: none;
     }
 
@@ -593,7 +598,12 @@
   <!-- ═══════════════════════════════════════════
        2. HERO SECTION
   ═══════════════════════════════════════════ -->
-  <section id="hero" class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6 pt-20 lg:pt-0">
+  <section id="hero" class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6 pt-16 pb-20 lg:pt-0 lg:pb-0">
+    <!-- Full-bleed hero background image -->
+    <div class="hero-bg">
+      <img src="hero-v6.png" alt="TingTing Networks LIVE commerce studio with creator streaming to multiple platforms" width="1024" height="1024" loading="eager" fetchpriority="high">
+    </div>
+
     <!-- Ambient orbs -->
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
@@ -629,17 +639,10 @@
           <i data-lucide="chevron-down" class="w-4 h-4"></i>
         </a>
       </div>
-
-      <!-- Hero Image -->
-      <div class="fade-up stagger-5 mt-14 max-w-3xl mx-auto">
-        <div class="hero-image-wrap">
-          <img src="hero-v6.png" alt="TingTing Networks LIVE commerce studio with creator streaming to multiple platforms" width="1024" height="1024" loading="eager">
-        </div>
-      </div>
     </div>
 
     <!-- Scroll indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10">
+    <div class="absolute bottom-24 lg:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10">
       <span class="text-txt-muted text-xs font-medium tracking-wider uppercase">Scroll</span>
       <div class="bounce">
         <i data-lucide="chevron-down" class="w-5 h-5 text-txt-muted"></i>
