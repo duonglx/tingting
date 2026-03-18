@@ -322,13 +322,48 @@
       animation-play-state: paused;
     }
 
-    /* ── Partner Logo Strip ── */
+    /* ── Partner Logo Marquee ── */
+    .partner-marquee-wrap {
+      overflow: hidden;
+      /* Fade edges: transparent → visible → transparent */
+      -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+      mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    }
+
+    @keyframes partner-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    @keyframes partner-scroll-reverse {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+
+    .partner-track {
+      display: flex;
+      gap: 12px;
+      width: max-content;
+      animation: partner-scroll 28s linear infinite;
+      will-change: transform;
+    }
+
+    .partner-track-reverse {
+      animation-name: partner-scroll-reverse;
+      animation-duration: 34s;
+    }
+
+    .partner-marquee-wrap:hover .partner-track {
+      animation-play-state: paused;
+    }
+
     .partner-logo-pill {
       width: 140px;
       height: 64px;
       border-radius: 12px;
       background: rgba(255, 255, 255, 0.92);
       overflow: hidden;
+      flex-shrink: 0;
       transition: transform 300ms ease, box-shadow 300ms ease;
     }
 
@@ -348,6 +383,7 @@
         width: 160px;
         height: 72px;
       }
+      .partner-track { gap: 16px; }
     }
 
     @media (max-width: 768px) {
@@ -356,10 +392,22 @@
         height: 52px;
         border-radius: 10px;
       }
-
+      .partner-track {
+        gap: 10px;
+        animation-duration: 36s;
+      }
+      .partner-track-reverse {
+        animation-duration: 42s;
+      }
       .partner-logo-pill:hover {
         transform: none;
         box-shadow: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .partner-track {
+        animation: none !important;
       }
     }
 
@@ -930,21 +978,34 @@
   <section id="partners" class="relative py-10 lg:py-12" aria-label="Brand partners"
     style="background: var(--bg-black)">
     <div class="section-divider absolute top-0 left-0 right-0"></div>
-    <div class="fade-up max-w-5xl mx-auto px-6 flex items-center justify-center gap-3 sm:gap-4 lg:gap-5 flex-wrap">
-      <div class="partner-logo-pill">
-        <img src="assets/logos/obagi.jpg" alt="Obagi" loading="lazy" />
+    <div class="fade-up partner-marquee-wrap mx-auto" style="max-width: 900px">
+      <!-- Row 1 — scrolls left -->
+      <div class="partner-track">
+        <div class="partner-logo-pill"><img src="assets/logos/obagi.jpg" alt="Obagi" loading="lazy" /></div>
+        <div class="partner-logo-pill"><img src="assets/logos/biore.jpg" alt="Bioré" loading="lazy" /></div>
+        <div class="partner-logo-pill"><img src="assets/logos/laurier.jpg" alt="Laurier" loading="lazy" /></div>
+        <div class="partner-logo-pill"><img src="assets/logos/curel.jpg" alt="Curél" loading="lazy" /></div>
+        <div class="partner-logo-pill"><img src="assets/logos/diana.jpg" alt="Diana" loading="lazy" /></div>
+        <!-- Duplicate for seamless loop -->
+        <div class="partner-logo-pill" aria-hidden="true"><img src="assets/logos/obagi.jpg" alt="" loading="lazy" /></div>
+        <div class="partner-logo-pill" aria-hidden="true"><img src="assets/logos/biore.jpg" alt="" loading="lazy" /></div>
+        <div class="partner-logo-pill" aria-hidden="true"><img src="assets/logos/laurier.jpg" alt="" loading="lazy" /></div>
+        <div class="partner-logo-pill" aria-hidden="true"><img src="assets/logos/curel.jpg" alt="" loading="lazy" /></div>
+        <div class="partner-logo-pill" aria-hidden="true"><img src="assets/logos/diana.jpg" alt="" loading="lazy" /></div>
       </div>
-      <div class="partner-logo-pill">
-        <img src="assets/logos/biore.jpg" alt="Bioré" loading="lazy" />
-      </div>
-      <div class="partner-logo-pill">
-        <img src="assets/logos/laurier.jpg" alt="Laurier" loading="lazy" />
-      </div>
-      <div class="partner-logo-pill">
-        <img src="assets/logos/curel.jpg" alt="Curél" loading="lazy" />
-      </div>
-      <div class="partner-logo-pill">
-        <img src="assets/logos/diana.jpg" alt="Diana" loading="lazy" />
+      <!-- Row 2 — scrolls right (reverse order) -->
+      <div class="partner-track partner-track-reverse" style="margin-top: 10px">
+        <div class="partner-logo-pill"><img src="assets/logos/diana.jpg" alt="Diana" loading="lazy" /></div>
+        <div class="partner-logo-pill"><img src="assets/logos/curel.jpg" alt="Curél" loading="lazy" /></div>
+        <div class="partner-logo-pill"><img src="assets/logos/laurier.jpg" alt="Laurier" loading="lazy" /></div>
+        <div class="partner-logo-pill"><img src="assets/logos/biore.jpg" alt="Bioré" loading="lazy" /></div>
+        <div class="partner-logo-pill"><img src="assets/logos/obagi.jpg" alt="Obagi" loading="lazy" /></div>
+        <!-- Duplicate for seamless loop -->
+        <div class="partner-logo-pill" aria-hidden="true"><img src="assets/logos/diana.jpg" alt="" loading="lazy" /></div>
+        <div class="partner-logo-pill" aria-hidden="true"><img src="assets/logos/curel.jpg" alt="" loading="lazy" /></div>
+        <div class="partner-logo-pill" aria-hidden="true"><img src="assets/logos/laurier.jpg" alt="" loading="lazy" /></div>
+        <div class="partner-logo-pill" aria-hidden="true"><img src="assets/logos/biore.jpg" alt="" loading="lazy" /></div>
+        <div class="partner-logo-pill" aria-hidden="true"><img src="assets/logos/obagi.jpg" alt="" loading="lazy" /></div>
       </div>
     </div>
   </section>
