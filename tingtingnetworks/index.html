@@ -350,23 +350,48 @@
       }
 
       /* ── Partner Logo Strip ── */
-      .partner-logo {
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain;
-        filter: brightness(0) invert(1) opacity(0.45);
-        transition: filter 300ms ease, transform 300ms ease;
+      .partner-logo-pill {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 24px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        transition: background 300ms ease, border-color 300ms ease, transform 300ms ease;
       }
 
-      .partner-logo:hover {
-        filter: brightness(1) opacity(1);
+      .partner-logo-pill:hover {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: rgba(132, 204, 22, 0.3);
         transform: translateY(-2px);
       }
 
+      .partner-logo-pill img {
+        height: 28px;
+        width: auto;
+        object-fit: contain;
+        filter: brightness(0) invert(1) opacity(0.7);
+        transition: filter 300ms ease;
+      }
+
+      .partner-logo-pill:hover img {
+        filter: brightness(1) opacity(1);
+      }
+
+      @media (min-width: 1024px) {
+        .partner-logo-pill { padding: 14px 32px; }
+        .partner-logo-pill img { height: 32px; }
+      }
+
       @media (max-width: 768px) {
-        .partner-logo:hover {
-          filter: brightness(0) invert(1) opacity(0.45);
+        .partner-logo-pill:hover {
+          background: rgba(255, 255, 255, 0.06);
+          border-color: rgba(255, 255, 255, 0.08);
           transform: none;
+        }
+        .partner-logo-pill:hover img {
+          filter: brightness(0) invert(1) opacity(0.7);
         }
       }
 
@@ -1006,45 +1031,43 @@
     </section>
 
     <!-- ═══════════════════════════════════════════
-       3. STATS MARQUEE
+       3. STATS BAR
   ═══════════════════════════════════════════ -->
     <section
       id="stats"
-      class="relative py-6"
+      class="relative py-6 lg:py-8"
       style="background: var(--bg-surface)"
     >
       <div class="section-divider absolute top-0 left-0 right-0"></div>
       <div class="section-divider absolute bottom-0 left-0 right-0"></div>
 
-      <div class="max-w-4xl mx-auto px-6 flex items-center justify-center gap-8 lg:gap-16">
-        <div class="flex items-center gap-3">
+      <div class="max-w-4xl mx-auto px-6 grid grid-cols-3 gap-4 lg:gap-16">
+        <div class="flex flex-col items-center text-center gap-1 lg:flex-row lg:gap-3">
           <span
-            class="font-heading font-bold text-2xl lg:text-3xl text-accent"
+            class="font-heading font-bold text-xl sm:text-2xl lg:text-3xl text-accent"
             data-count="100"
             data-suffix="+"
             >0+</span
           >
-          <span class="text-txt-secondary text-sm font-medium whitespace-nowrap">Brand Partners</span>
+          <span class="text-txt-secondary text-xs sm:text-sm font-medium">Brand Partners</span>
         </div>
-        <span class="text-border-light text-2xl">•</span>
-        <div class="flex items-center gap-3">
+        <div class="flex flex-col items-center text-center gap-1 lg:flex-row lg:gap-3 border-x" style="border-color: var(--border)">
           <span
-            class="font-heading font-bold text-2xl lg:text-3xl text-accent"
+            class="font-heading font-bold text-xl sm:text-2xl lg:text-3xl text-accent"
             data-count="2000"
             data-suffix="+"
             >0+</span
           >
-          <span class="text-txt-secondary text-sm font-medium whitespace-nowrap">Creators</span>
+          <span class="text-txt-secondary text-xs sm:text-sm font-medium">Creators</span>
         </div>
-        <span class="text-border-light text-2xl">•</span>
-        <div class="flex items-center gap-3">
+        <div class="flex flex-col items-center text-center gap-1 lg:flex-row lg:gap-3">
           <span
-            class="font-heading font-bold text-2xl lg:text-3xl text-accent"
+            class="font-heading font-bold text-xl sm:text-2xl lg:text-3xl text-accent"
             data-count="500"
             data-suffix="+"
             >0+</span
           >
-          <span class="text-txt-secondary text-sm font-medium whitespace-nowrap">Campaigns</span>
+          <span class="text-txt-secondary text-xs sm:text-sm font-medium">Campaigns</span>
         </div>
       </div>
     </section>
@@ -1052,15 +1075,25 @@
     <!-- ═══════════════════════════════════════════
        3b. BRAND LOGO STRIP
   ═══════════════════════════════════════════ -->
-    <section id="partners" class="relative py-8" aria-label="Brand partners" style="background: var(--bg-black)">
+    <section id="partners" class="relative py-10 lg:py-12" aria-label="Brand partners" style="background: var(--bg-black)">
       <div class="section-divider absolute top-0 left-0 right-0"></div>
 
-      <div class="fade-up max-w-4xl mx-auto px-6 flex items-center justify-center gap-10 lg:gap-16 flex-wrap">
-        <img src="assets/logos/curel.png" alt="Curél" class="partner-logo h-8 lg:h-10 w-auto" loading="lazy" />
-        <img src="assets/logos/obagi.png" alt="Obagi" class="partner-logo h-8 lg:h-10 w-auto" loading="lazy" />
-        <img src="assets/logos/biore.png" alt="Bioré" class="partner-logo h-8 lg:h-10 w-auto" loading="lazy" />
-        <img src="assets/logos/laurier.png" alt="Laurier" class="partner-logo h-8 lg:h-10 w-auto" loading="lazy" />
-        <img src="assets/logos/diana.png" alt="Diana" class="partner-logo h-8 lg:h-10 w-auto" loading="lazy" />
+      <div class="fade-up max-w-5xl mx-auto px-6 flex items-center justify-center gap-3 sm:gap-4 lg:gap-5 flex-wrap">
+        <div class="partner-logo-pill">
+          <img src="assets/logos/curel.png" alt="Curél" loading="lazy" />
+        </div>
+        <div class="partner-logo-pill">
+          <img src="assets/logos/obagi.png" alt="Obagi" loading="lazy" />
+        </div>
+        <div class="partner-logo-pill">
+          <img src="assets/logos/biore.png" alt="Bioré" loading="lazy" />
+        </div>
+        <div class="partner-logo-pill">
+          <img src="assets/logos/laurier.png" alt="Laurier" loading="lazy" />
+        </div>
+        <div class="partner-logo-pill">
+          <img src="assets/logos/diana.png" alt="Diana" loading="lazy" />
+        </div>
       </div>
     </section>
 
