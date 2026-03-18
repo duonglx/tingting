@@ -351,12 +351,11 @@
 
       /* ── Partner Logo Strip ── */
       .partner-logo-pill {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 14px 28px;
-        border-radius: 14px;
+        width: 140px;
+        height: 64px;
+        border-radius: 12px;
         background: rgba(255, 255, 255, 0.92);
+        overflow: hidden;
         transition: transform 300ms ease, box-shadow 300ms ease;
       }
 
@@ -366,19 +365,17 @@
       }
 
       .partner-logo-pill img {
-        height: 36px;
-        width: auto;
-        object-fit: contain;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
 
       @media (min-width: 1024px) {
-        .partner-logo-pill { padding: 16px 36px; }
-        .partner-logo-pill img { height: 40px; }
+        .partner-logo-pill { width: 160px; height: 72px; }
       }
 
       @media (max-width: 768px) {
-        .partner-logo-pill { padding: 10px 20px; }
-        .partner-logo-pill img { height: 28px; }
+        .partner-logo-pill { width: 110px; height: 52px; border-radius: 10px; }
         .partner-logo-pill:hover {
           transform: none;
           box-shadow: none;
