@@ -1,0 +1,25 @@
+{
+  "name": "TingTing Networks",
+  "short_name": "TingTing",
+  "description": "Vietnam's leading shoppertainment platform: MCN partnerships, LIVE operations, social affiliate community and seller enablement.",
+  "lang": "vi",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#050505",
+  "icons": [
+    {
+      "src": "/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
