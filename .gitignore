@@ -84,3 +84,14 @@ external/
 
 # Git worktrees (local development only)
 worktrees/
+
+# Local-only — AI tooling, internal docs & private deck (kept on disk, NOT published)
+.claude/
+.opencode/
+.agent/
+CLAUDE.md
+AGENTS.md
+GEMINI.md
+release-manifest.json
+spec/
+docs/seo-google-search-console-business-profile-guide.md
