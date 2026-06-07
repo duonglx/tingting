@@ -469,21 +469,6 @@
       transform: scaleX(1);
     }
 
-    /* ── Nav "Networks" reveal on scroll ── */
-    .nav-networks {
-      opacity: 0;
-      max-width: 0;
-      overflow: hidden;
-      transition:
-        opacity 0.3s ease,
-        max-width 0.3s ease;
-    }
-
-    .nav-networks.visible {
-      opacity: 1;
-      max-width: 120px;
-    }
-
     /* ── Bento Card ── */
     .bento-card {
       background: var(--bg-card);
@@ -808,9 +793,9 @@
   <nav id="floating-nav"
     class="glass-nav hidden lg:flex fixed top-6 left-1/2 -translate-x-1/2 z-50 rounded-full px-3 py-2 items-center gap-1"
     style="min-width: 680px">
-    <a href="#hero" class="flex items-center px-4 py-2 shrink-0 cursor-pointer" aria-label="TingTing Home">
-      <span class="font-heading font-bold text-lg text-accent">TingTing</span><span
-        class="nav-networks font-heading font-medium text-lg text-txt-primary" style="margin-left: 3px">Networks</span>
+    <a href="#hero" class="flex items-center px-4 shrink-0 cursor-pointer" aria-label="TingTing Networks Home">
+      <img src="assets/logo_ttn_white.png" alt="TingTing Networks"
+        style="height: 36px; width: auto; display: block" />
     </a>
     <div class="flex items-center gap-1 mx-auto">
       <a href="#about"
@@ -835,9 +820,9 @@
         -webkit-backdrop-filter: blur(20px);
         border-bottom: 1px solid rgba(255, 255, 255, 0.06);
       ">
-    <a href="#hero" class="flex items-center cursor-pointer" aria-label="TingTing Home">
-      <span class="font-heading font-bold text-lg text-accent">TingTing</span><span
-        class="nav-networks font-heading font-medium text-lg text-txt-primary" style="margin-left: 3px">Networks</span>
+    <a href="#hero" class="flex items-center cursor-pointer" aria-label="TingTing Networks Home">
+      <img src="assets/logo_ttn_white.png" alt="TingTing Networks"
+        style="height: 32px; width: auto; display: block" />
     </a>
     <button id="menu-toggle" class="w-11 h-11 flex items-center justify-center rounded-full cursor-pointer"
       aria-label="Open menu" style="background: rgba(255, 255, 255, 0.06)">
@@ -1848,9 +1833,9 @@
   ═══════════════════════════════════════════ -->
   <footer class="py-8 px-6 border-t" style="border-color: var(--border)">
     <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-2">
-        <span class="font-heading font-bold text-accent">TingTing</span>
-        <span class="font-heading font-medium text-txt-secondary text-sm">Networks</span>
+      <div class="flex items-center">
+        <img src="assets/logo_ttn_white.png" alt="TingTing Networks"
+          style="height: 30px; width: auto; display: block" />
       </div>
       <p class="text-txt-muted text-sm text-center sm:text-right">
         Content · Creator · Commerce&ensp;|&ensp;&copy; 2026 TingTing
@@ -2116,22 +2101,6 @@
 
         if (heroSection) stickyObserver.observe(heroSection);
         if (contactSection) stickyObserver.observe(contactSection);
-      }
-
-      // ── Nav "Networks" reveal when hero heading scrolls out ──
-      const heroH1 = document.querySelector("#hero h1");
-      const navNetworks = document.querySelectorAll(".nav-networks");
-      if (heroH1 && navNetworks.length) {
-        const h1Observer = new IntersectionObserver(
-          (entries) => {
-            const isVisible = entries[0].isIntersecting;
-            navNetworks.forEach((el) =>
-              el.classList.toggle("visible", !isVisible),
-            );
-          },
-          { threshold: 0.1 },
-        );
-        h1Observer.observe(heroH1);
       }
 
       // ── Smooth Scroll for anchor links ──
