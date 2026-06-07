@@ -18,6 +18,13 @@
   <link rel="canonical" href="https://tingtingnetworks.asia" />
   <meta name="theme-color" content="#050505" />
 
+  <!-- Favicons & PWA -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
   <!-- Geo -->
   <meta name="geo.region" content="VN-SG" />
   <meta name="geo.placename" content="Ho Chi Minh City" />
@@ -43,30 +50,62 @@
   <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "TingTing Networks",
-        "url": "https://tingtingnetworks.asia",
-        "logo": "https://tingtingnetworks.asia/logo.png",
-        "description": "Vietnam's one-stop shoppertainment platform. MCN creator partnerships, LIVE operations, social affiliate community and seller enablement.",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "25A Tu Xuong",
-          "addressLocality": "Ho Chi Minh City",
-          "addressRegion": "District 3",
-          "addressCountry": "VN"
-        },
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+84-901807346",
-          "contactType": "partnership",
-          "email": "partnership@tingtingnetworks.asia",
-          "availableLanguage": ["Vietnamese", "English"]
-        },
-        "serviceArea": {
-          "@type": "GeoShape",
-          "name": "Southeast Asia"
-        },
-        "sameAs": []
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://tingtingnetworks.asia/#organization",
+            "name": "TingTing Networks",
+            "url": "https://tingtingnetworks.asia/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://tingtingnetworks.asia/logo.png",
+              "width": 1408,
+              "height": 768
+            },
+            "image": "https://tingtingnetworks.asia/og-image.jpg",
+            "description": "Vietnam's one-stop shoppertainment platform. MCN creator partnerships, LIVE operations, social affiliate community and seller enablement.",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "25A Tu Xuong",
+              "addressLocality": "Ho Chi Minh City",
+              "addressRegion": "District 3",
+              "addressCountry": "VN"
+            },
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+84-901807346",
+              "contactType": "partnership",
+              "email": "partnership@tingtingnetworks.asia",
+              "availableLanguage": ["Vietnamese", "English"]
+            },
+            "areaServed": {
+              "@type": "Place",
+              "name": "Southeast Asia"
+            },
+            "sameAs": ["https://zalo.me/0922369777"]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://tingtingnetworks.asia/#website",
+            "url": "https://tingtingnetworks.asia/",
+            "name": "TingTing Networks",
+            "inLanguage": "vi-VN",
+            "publisher": { "@id": "https://tingtingnetworks.asia/#organization" }
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "@id": "https://tingtingnetworks.asia/#nav",
+            "name": ["About", "Solutions", "Services", "Ecosystem", "Creator Hub", "Partner With Us"],
+            "url": [
+              "https://tingtingnetworks.asia/#about",
+              "https://tingtingnetworks.asia/#problems",
+              "https://tingtingnetworks.asia/#services",
+              "https://tingtingnetworks.asia/#ecosystem",
+              "https://tingtingnetworks.asia/#creator-hub",
+              "https://tingtingnetworks.asia/#contact"
+            ]
+          }
+        ]
       }
     </script>
 
